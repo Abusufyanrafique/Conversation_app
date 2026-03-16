@@ -28,8 +28,8 @@ class FocusModeScreen extends StatelessWidget {
           ),
     );
           },
-          child: Column(
-            children: [
+              child: Column(
+              children: [
               Expanded(
                 child: PageView.builder(
                   controller: provider.pageController,
@@ -38,7 +38,7 @@ class FocusModeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal:55,
+                        horizontal:72,
                         vertical: 150,
                       ),
                       child: SizedBox(

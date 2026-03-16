@@ -98,7 +98,10 @@ class _CardFace extends StatelessWidget {
   final String text;
   final bool isBack;
 
-  const _CardFace({required this.text, required this.isBack});
+  const _CardFace({
+    required this.text, 
+    required this.isBack
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +137,10 @@ class _CardFace extends StatelessWidget {
               Text(
                 text,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.caveat(fontSize: 18, color: Colors.white),
+                style: GoogleFonts.caveat(
+                fontSize: 18, 
+                color: Colors.white
+                  ),
               ),
             ],
           ),

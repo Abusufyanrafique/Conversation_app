@@ -1,5 +1,6 @@
 import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/providers/Paywall/user_type_screen_provider.dart';
+import 'package:conversation_app/ui/screens/pay_wall/question_screen.dart';
 import 'package:conversation_app/widgets/pay_wall/user_type_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,10 @@ class UserTypeScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF0E4DC),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20, 
+            vertical: 12
+            ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -56,7 +60,7 @@ class UserTypeScreen extends StatelessWidget {
                 text:TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Who are you\n',
+                      text: AppText.whoareyoun,
                      style: GoogleFonts.jost(
                       fontSize:30,
                       color: const Color(0xFF2B2622),
@@ -64,7 +68,7 @@ class UserTypeScreen extends StatelessWidget {
                     ),
                     ),
                     TextSpan(
-                      text: 'talking with?',
+                      text: AppText.talkingwith,
                       style: GoogleFonts.jost(
                       fontSize:30,
                       color: const Color(0xFF7A6F66),
@@ -80,10 +84,10 @@ class UserTypeScreen extends StatelessWidget {
 
               // Subtitle
               Text(
-                "We'll find questions that feel right for this moment",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.jost(
-                      fontSize:16,
+                      AppText.feelmoment,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.jost(
+                      fontSize:14,
                       color: const Color(0xFF6B6460),
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w300,
@@ -101,7 +105,7 @@ class UserTypeScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    childAspectRatio: 1.2,
+                    childAspectRatio: 1.1,
                   ),
                   itemCount: options.length,
                   itemBuilder: (context, index) {
@@ -123,7 +127,7 @@ class UserTypeScreen extends StatelessWidget {
                     height: 52,
                     decoration: BoxDecoration(
                       color: hasSelection
-                          ? const Color(0xFF2C2C2C)
+                          ? const Color(0xFF2B2622)
                           : Color(0xFFEFE7DE),
                       borderRadius: BorderRadius.circular(15.87),
                       border: Border.all(
@@ -131,9 +135,15 @@ class UserTypeScreen extends StatelessWidget {
                         width: 1.5,
                       ),
                     ),
-                    child: TextButton(
+                      child: TextButton(
                       onPressed: hasSelection
                           ? () {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                builder: (context) => const QuestionScreen()
+                               ),
+                              );
                               final selected = provider.getSelectedOption(options);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -171,7 +181,7 @@ class UserTypeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 8),
+              
             ],
           ),
         ),

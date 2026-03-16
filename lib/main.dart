@@ -5,6 +5,7 @@ import 'package:conversation_app/providers/OnboardingProvider/card_provider.dart
 import 'package:conversation_app/providers/OnboardingProvider/deck_provider.dart';
 import 'package:conversation_app/providers/OnboardingProvider/notification_provider.dart';
 import 'package:conversation_app/providers/OnboardingProvider/onboarding_provider.dart';
+import 'package:conversation_app/providers/Paywall/question_screen_provider.dart';
 import 'package:conversation_app/providers/Paywall/user_type_screen_provider.dart';
 import 'package:conversation_app/providers/WhoAreYouProvider/who_are_you.dart';
 import 'package:conversation_app/providers/splash_provider/splash_provider.dart';
@@ -26,6 +27,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => CardProvider()),
         ChangeNotifierProvider(create: (_) => CardFocusScreenProvider(),),
          ChangeNotifierProvider(create: (_) => UserTypeScreenProvider()),
+         ChangeNotifierProvider(create: (_) => QuestionScreenProvider()),
       ],
       child: DevicePreview(
         enabled: true, 

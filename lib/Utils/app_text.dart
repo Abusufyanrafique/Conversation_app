@@ -54,3 +54,6 @@
         //     ================paywall==============
 const String step = 'STEP 1 OF 1';        
 const String startwithtwofree =     'START WITH TWO FREE CARDS →';
+const String whoareyoun = 'Who are you\n';
+const String talkingwith = 'talking with?';
+const String feelmoment = "We'll find questions that feel right for this moment";
