@@ -14,10 +14,12 @@ class SingleCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 220,
-      height: 295,
+      width: 230,
+      height:320,
       decoration: BoxDecoration(
-        color: isFlipped ? Colors.white : const Color(0xFFC99E97).withOpacity(0.5),
+        color:
+         isFlipped ? Color(0xFFCAA099).withOpacity(0.1)
+          : const Color(0xFFCAA099).withOpacity(0.5),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -38,7 +40,6 @@ class SingleCardWidget extends StatelessWidget {
 // ── Card Front (image side) ──────────────────────────────
 class _CardFront extends StatelessWidget {
   final ConversationCard card;
-
   const _CardFront({required this.card});
 
   @override
@@ -46,46 +47,18 @@ class _CardFront extends StatelessWidget {
     return Stack(
       children: [
         // Background image
-        Positioned.fill(
-          child: Image.asset(
-            card.imagePath,
-            fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => const _FallbackCardFront(),
-          ),
-        ),
 
-        // Overlay gradient for text readability
         Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.15),
-                ],
-              ),
+          child: Container(    
+                  
+            child: Image.asset(
+              card.imagePath,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => const _FallbackCardFront(),
             ),
           ),
         ),
 
-        // Top label
-        // const Positioned(
-        //   top: 20,
-        //   left: 0,
-        //   right: 0,
-        //   child: Text(
-        //     'THE CONVERSATION COLLECTION',
-        //     textAlign: TextAlign.center,
-        //     style: TextStyle(
-        //       fontSize: 7,
-        //       letterSpacing: 2,
-        //       color: Colors.white70,
-        //       fontFamily: 'Georgia',
-        //     ),
-        //   ),
-        // ),
 
         // Center icon
         const Center(
@@ -108,17 +81,6 @@ class _FallbackCardFront extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          // Text(
-          //   'THE CONVERSATION\nCOLLECTION',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //     letterSpacing: 2,
-          //     color: Colors.white70,
-          //     fontFamily: 'Georgia',
-          //     height: 1.8,
-          //   ),
-          // ),
           SizedBox(height: 20),
           _ChatIcon(),
           SizedBox(height: 20),
@@ -145,7 +107,7 @@ class _QuestionFace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      // color: Colors.white,
       padding: const EdgeInsets.all(24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/providers/OnboardingProvider/notification_provider.dart';
 import 'package:conversation_app/ui/screens/onboarding/all_set_screen.dart';
@@ -14,7 +15,7 @@ class NotificationPermissionScreen extends StatelessWidget {
     final provider = context.watch<NotificationProvider>();
 
     return Scaffold(
-      backgroundColor: const Color(0xFF2B2622),
+      backgroundColor:AppColors.focusscreencolor,
       body: SafeArea(
         
         child: Padding(

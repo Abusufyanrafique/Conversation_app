@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/Utils/app_textstyles.dart';
 import 'package:conversation_app/providers/OnboardingProvider/card_provider.dart';
@@ -98,7 +99,7 @@ class _DrawCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEFE7DE),
+      backgroundColor:AppColors.backgroundscreencolor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

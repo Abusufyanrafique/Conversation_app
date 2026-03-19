@@ -8,22 +8,38 @@ class CardProvider extends ChangeNotifier {
     ConversationCard(
       id: 1,
       question: "What would you want me to truly understand about the way you love?",
-      imagePath: 'assets/images/card_interation/swipe_card1.png',
+      imagePath: 'assets/images/card_interation/swipe_card1.png', 
+      height:320, 
+      width:246 , 
+      angle:20 , 
+     
     ),
     ConversationCard(
       id: 2,
       question: "What moment in your life shaped who you are the most?",
-      imagePath: 'assets/images/card_interation/swipe_card2.png',
+      imagePath: 'assets/images/card_interation/swipe_card2.png', 
+      height:320 , 
+      width: 346, 
+      angle: null, 
+      
     ),
     ConversationCard(
       id: 3,
       question: "What is something you wish people asked you more often?",
-      imagePath: 'assets/images/card_interation/swipe_card3.png',
+      imagePath: 'assets/images/card_interation/swipe_card3.png', 
+      height: 320, 
+      width: 346, 
+      // angle: null, 
+      
     ),
     ConversationCard(
       id: 4,
       question: "What does a perfect day look like for you?",
-      imagePath: 'assets/images/card_interation/swipe_card4.png',
+      imagePath: 'assets/images/card_interation/swipe_card4.png', 
+      height: 320, 
+      width: 346, 
+      // angle: null, 
+     
     ),
   ];
 

@@ -13,7 +13,7 @@ class CardDeckScreen extends StatelessWidget {
   const CardDeckScreen({super.key});
 
   static const Color bgColor = Color(0xFFEFE7DE);
-  static const Color pinkCard = Color(0xFFBF8C8C);
+  static const Color pinkCard = Color(0xFFC49790);
   static const Color darkText = Color(0xFF4A3535);
   static const Color subtleText = Color(0xFF9E7C7C);
 
@@ -79,8 +79,8 @@ class _DeckMainView extends StatelessWidget {
           ),
           const SizedBox(height: 6),
            Text(
-            AppText.swipe,
-            style: GoogleFonts.jost(
+                     AppText.swipe,
+                     style: GoogleFonts.jost(
                      fontSize:16,
                       height: 1.0,                    
                      color: Color(0xFF7A6F66),
@@ -97,7 +97,7 @@ class _DeckMainView extends StatelessWidget {
               onHorizontalDragEnd: (details) {
                 if (details.primaryVelocity! < -200) {
                   provider.nextCard();
-                } else if (details.primaryVelocity! > 200) {
+                } else if (details.primaryVelocity! >200) {
                   provider.previousCard();
                 }
               },

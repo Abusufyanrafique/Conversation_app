@@ -20,4 +20,11 @@ class AppImages {
   static const home = "assets/icons/card_interation/home.png";
   static const team = "assets/icons/card_interation/team.png";
   static const emoji = "assets/icons/card_interation/emoji.png";
+  static const oo = "assets/icons/pay_wall/o.png";
+  static const exclusiveimage = "assets/icons/pay_wall/Exclusive.png";
+  static const blackheart = "assets/icons/pay_wall/blackheart.png";
+  static const google = "assets/icons/authentication/google.png";
+  static const apple = "assets/icons/authentication/apple.png";
+  static const email = "assets/icons/authentication/email.png";
+  static const flowerimage = "assets/images/authentication/flowerimage.png";
 }

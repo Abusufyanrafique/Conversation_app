@@ -1,15 +1,19 @@
 import 'package:conversation_app/providers/Card_Interation/Cardprovider.dart';
 import 'package:conversation_app/providers/Card_Interation/card_provider.dart';
 import 'package:conversation_app/providers/OnboardingProvider/all_set_provider.dart';
-import 'package:conversation_app/providers/OnboardingProvider/card_provider.dart' hide CardProvider;
 import 'package:conversation_app/providers/OnboardingProvider/deck_provider.dart';
 import 'package:conversation_app/providers/OnboardingProvider/notification_provider.dart';
 import 'package:conversation_app/providers/OnboardingProvider/onboarding_provider.dart';
+import 'package:conversation_app/providers/Paywall/plan_provider_subscription.dart';
 import 'package:conversation_app/providers/Paywall/question_screen_provider.dart';
 import 'package:conversation_app/providers/Paywall/user_type_screen_provider.dart';
 import 'package:conversation_app/providers/WhoAreYouProvider/who_are_you.dart';
+import 'package:conversation_app/providers/authentication/auth_see_you_screen_provider.dart';
 import 'package:conversation_app/providers/splash_provider/splash_provider.dart';
-import 'package:conversation_app/ui/screens/Splash/splash_screen.dart';
+import 'package:conversation_app/ui/screens/authentication/wel_come_back_screen.dart';
+import 'package:conversation_app/ui/screens/pay_wall/pay_wall_subscription_screen.dart';
+import 'package:conversation_app/ui/screens/pay_wall/question_screen.dart';
+import 'package:conversation_app/ui/screens/pay_wall/welcome_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +32,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => CardFocusScreenProvider(),),
          ChangeNotifierProvider(create: (_) => UserTypeScreenProvider()),
          ChangeNotifierProvider(create: (_) => QuestionScreenProvider()),
+         ChangeNotifierProvider(create: (_)=>PricingProviderSubscription()),
+         ChangeNotifierProvider(create: (_)=>AuthSeeYouScreenProvider())
       ],
       child: DevicePreview(
         enabled: true, 
@@ -48,7 +54,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreen(),
+      home: const WelcomeBackScreen(),
     );
   }
 }

@@ -67,6 +67,9 @@ flutter:
     - assets/icons/onboarding/
     - assets/images/card_interation/
     - assets/icons/card_interation/
+    - assets/icons/pay_wall/
+    - assets/images/authentication/
+    - assets/icons/authentication/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -80,12 +83,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: PeachBlue
+      fonts:
+        - asset: assets/fonts/peach-blue.otf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
@@ -94,3 +95,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+ 

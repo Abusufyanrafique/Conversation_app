@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/providers/splash_provider/splash_provider.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(                          // ✅ const hata diya
-      backgroundColor: const Color(0xffEFE7DE),
+    return Scaffold(                          
+      backgroundColor:AppColors.backgroundscreencolor,
       body: Center(
         child: Image(
           image: const AssetImage(

@@ -15,63 +15,72 @@ class QuestionScreen extends StatelessWidget {
     final provider = Provider.of<QuestionScreenProvider>(context);
 
     return Scaffold(
-      backgroundColor: Color(0xffEFE7DE),
+      backgroundColor: const Color(0xFFEFE7DE),
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 34.0,right: 34),
-            child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                height: 37.87,
-                width: 37.87,
-               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.87),
-               border: Border.all(
-               color: Color(0xFFEFE7DE),
-               width: 1,
-                ),
-              ),
-              child: Image(image: AssetImage(AppImages.foucsarrow)),
-            ),
-               Text(
-                "CARD ${provider.currentIndex + 1} OF ${provider.totalCards}",
-                style: GoogleFonts.jost(
-                      fontSize:10,
-                      color:Color(0xFFA09890),
-                      letterSpacing:1.8,
+            // Top Bar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 34.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Back Button
+                  Container(
+                    height: 37.87,
+                    width: 37.87,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.white, width: 1),
+                    ),
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Image(
+                        image: AssetImage(AppImages.foucsarrow),
+                      ),
+                    ),
+                  ),
+
+                  // Card Counter
+                  Text(
+                    "CARD ${provider.currentIndex + 1} OF ${provider.totalCards}",
+                    style: GoogleFonts.jost(
+                      fontSize: 10,
+                      color: const Color(0xFFA09890),
+                      letterSpacing: 1.8,
                       fontWeight: FontWeight.w400,
                     ),
+                  ),
+
+                  // Dot Indicator
+                  QuestionDotIndicator(
+                    currentIndex: provider.currentIndex,
+                    total: provider.cards.length,
+                  ),
+                ],
               ),
-             QuestionDotIndicator(
-             currentIndex: provider.currentIndex,
-            total: provider.cards.length,
-    ),
-            ],),
-          ),
-            Spacer(),
+            ),
 
-            QuestionScreenCard(card: provider.currentCard),
-            //  SizedBox(
-            //   height: 250,
-            //   child: PageView.builder(
-            //     controller: provider.pageController,
-            //     onPageChanged: provider.onPageChanged,
-            //     itemCount: provider.cards.length,
-            //     itemBuilder: (context, index) {
-            //       return QuestionScreenCard(
-            //         card: provider.cards[index],
-            //       );
-            //     },
-            //   ),
-            // ),
-           
-            Spacer(),
+            const Spacer(),
 
+            //  PageView for swipeable cards
+            SizedBox(
+              height: 261,
+              child: PageView.builder(
+                controller: provider.pageController,
+                onPageChanged: provider.onPageChanged,
+                itemCount: provider.cards.length,
+                itemBuilder: (context, index) {
+                  return QuestionScreenCard(card: provider.cards[index]);
+                },
+              ),
+            ),
+
+            const Spacer(),
+
+            // Bottom Navigation
             QuestionScreenbottomNav(),
           ],
         ),

@@ -145,9 +145,9 @@ class WelcomeScreen extends StatelessWidget {
                     Navigator.push(
                    context,
                    MaterialPageRoute(
-           builder: (context) => const UserTypeScreen()
-          ),
-    );
+                   builder: (context) => const UserTypeScreen()
+                  ),
+                 );
                    },
                   ),
                   SizedBox(height:15,),

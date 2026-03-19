@@ -13,28 +13,28 @@ class DeckView extends StatelessWidget {
 
     return Center(
       child: SizedBox(
-        width: 240,
+        width: 346,
         height: 320,
         child: Stack(
           alignment: Alignment.center,
           children: [
             // ── Background shadow cards (deck effect) ──
-            if (visibleCards.length >= 3)
-              Positioned(
-                top: 12,
-                child: Transform.rotate(
-                  angle: 0.08,
-                  child: _ShadowCard(opacity: 0.4),
-                ),
-              ),
-            if (visibleCards.length >= 2)
-              Positioned(
-                top: 12,
-                child: Transform.rotate(
-                  angle: -0.01,
-                  child: _ShadowCard(opacity: 0.65),
-                ),
-              ),
+            // if (visibleCards.length >= 3)
+            //   Positioned(
+            //     top: 12,
+            //     child: Transform.rotate(
+            //       angle: 0.08,
+            //       child: _ShadowCard(opacity: 0.4),
+            //     ),
+            //   ),
+            // if (visibleCards.length >= 2)
+            //   Positioned(
+            //     top: 12,
+            //     child: Transform.rotate(
+            //       angle: -0.01,
+            //       // child: _ShadowCard(opacity: 0.65),
+            //     ),
+            //   ),
 
             // ── Active card with flip animation ──
             AnimatedSwitcher(

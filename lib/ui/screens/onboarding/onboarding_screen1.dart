@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/Utils/app_textstyles.dart';
@@ -28,7 +29,7 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFEFE7DE),
+      backgroundColor:AppColors.backgroundscreencolor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),

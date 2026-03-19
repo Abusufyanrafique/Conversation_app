@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 import 'package:conversation_app/models/card_model.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FlipFoucsScreenCardWidget extends StatefulWidget {
   final CardModel card;
@@ -137,10 +136,9 @@ class _CardFace extends StatelessWidget {
               Text(
                 text,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.caveat(
-                fontSize: 18, 
-                color: Colors.white
-                  ),
+                 style: TextStyle(
+             fontFamily: "PeachBlue",
+             ),
               ),
             ],
           ),

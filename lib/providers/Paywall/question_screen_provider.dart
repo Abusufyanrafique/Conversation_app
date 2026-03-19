@@ -2,53 +2,61 @@ import 'package:conversation_app/models/pay_wall/question_screen_model.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreenProvider extends ChangeNotifier {
+  final PageController pageController = PageController();
+
+  final List<QuestionScreenModel> cards = [
+    QuestionScreenModel(
+      title: "CARD 1 INTIMACY", 
+      question: " What would you want me to truly understand about the way you love?"
+      ),
+    QuestionScreenModel(
+      title: "CARD 2 INTIMACY", 
+      question: "When do you feel most loved without any words at all?"
+      ),
+    QuestionScreenModel(
+      title: "CARD 3 INTIMACY", 
+      question: "What makes a great conversation memorable?"
+      ),
+  ];
 
   int _currentIndex = 0;
 
-  final PageController pageController = PageController();
-
-  final List<QuestionScreenModel> _cards = [
-    QuestionScreenModel(
-      title: "CARD 1 • INTIMACY",
-      question:
-          "What would you want me to truly understand about the way you love?",
-    ),
-    QuestionScreenModel(
-      title: "CARD 2 • INTIMACY",
-      question:
-          "When do you feel most loved without any words at all?",
-    ),
-  ];
-
-  
-  List<QuestionScreenModel> get cards => _cards;
-
   int get currentIndex => _currentIndex;
+  int get totalCards => cards.length;
+  QuestionScreenModel get currentCard => cards[_currentIndex];
 
-  QuestionScreenModel get currentCard => _cards[_currentIndex];
+  void nextPage(BuildContext context) {
+    if (_currentIndex < cards.length - 1) {
+      _currentIndex++;
+      pageController.animateToPage(
+        _currentIndex,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOut,
+      );
+      notifyListeners();
+    }
+  }
 
-  int get totalCards => _cards.length;
+  void previousPage() {
+    if (_currentIndex > 0) {
+      _currentIndex--;
+      pageController.animateToPage(
+        _currentIndex,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOut,
+      );
+      notifyListeners();
+    }
+  }
 
   void onPageChanged(int index) {
     _currentIndex = index;
     notifyListeners();
   }
 
-  void nextCard() {
-    if (_currentIndex < _cards.length - 1) {
-      pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.ease,
-      );
-    }
-  }
-
-  void previousCard() {
-    if (_currentIndex > 0) {
-      pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.ease,
-      );
-    }
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 }
