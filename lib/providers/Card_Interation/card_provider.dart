@@ -11,7 +11,7 @@ class CardProvider extends ChangeNotifier {
       imagePath: 'assets/images/card_interation/swipe_card1.png', 
       height:320, 
       width:246 , 
-      angle:20 , 
+      angle:20, 
      
     ),
     ConversationCard(

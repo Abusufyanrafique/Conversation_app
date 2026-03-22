@@ -119,7 +119,7 @@ class SeeYouAgainScreen extends StatelessWidget {
                     ),
             )
           ],),
-          SizedBox(height: 114,),
+          SizedBox(height: 45,),
           // Spacer(),
           PrimaryButton(
                 text:AppText.signin,

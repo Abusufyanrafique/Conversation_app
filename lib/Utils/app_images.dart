@@ -27,4 +27,8 @@ class AppImages {
   static const apple = "assets/icons/authentication/apple.png";
   static const email = "assets/icons/authentication/email.png";
   static const flowerimage = "assets/images/authentication/flowerimage.png";
+  static const locked = "assets/icons/library/locked.png";
+  static const greensavedcard = "assets/images/savedconversations/green_savedcard.png";
+  static const brownsavedcard = "assets/images/savedconversations/brown_savedcard.png";
+  static const bluesavedcard = "assets/images/savedconversations/blue_savedcard.png";
 }

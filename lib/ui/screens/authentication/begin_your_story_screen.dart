@@ -100,7 +100,7 @@ class BeginYourStoryScreen extends StatelessWidget {
               onTogglePassword: auth.togglePasswordVisibility,
             ),
             
-          SizedBox(height: 114,),
+          SizedBox(height: 100,),
           // Spacer(),
           PrimaryButton(
                 text:AppText.createaccount,

@@ -101,7 +101,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     ),
             )
           ],),
-          SizedBox(height: 214,),
+          SizedBox(height: 180,),
           // Spacer(),
           PrimaryButton(
                 text:AppText.sendresentlink,

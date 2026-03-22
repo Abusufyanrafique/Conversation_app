@@ -101,3 +101,12 @@ const String arrive ="We ve sent a reset link to your address. It may take a\n m
 const String begin1 = " Begin\n your Story.";
 const String afewmoredetails = "A few more details and you’re in";
 const String createaccount = "CREATE ACCOUNT";
+//==================savedConversationsscreen=================
+
+const String conversations = " Conversations";
+const String savedtext = "Saved";
+const String nothingsaved = "Nothing Saved";
+const String justyet = " just yet.";
+const String savedmeaningfulquestions = 'Save meaningful questions to revisit them\nlater.';
+const String tapcard = 'Tap ♡ on any card';
+const String broweslibrary = 'Browse the library';
