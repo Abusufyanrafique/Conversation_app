@@ -16,9 +16,8 @@ class SavedConversationsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             TopBar(),
-            SizedBox(height: 28,),
+            SizedBox(height: 10,),
             MetaRow(),
-            SizedBox(height: 28,),
             Expanded(
               child: BodyContent(),
               ),

@@ -1,6 +1,6 @@
 import 'package:conversation_app/providers/DashboardProvider/dashboard_provider.dart';
-import 'package:conversation_app/ui/screens/dashboard/HomeScreen.dart';
 import 'package:conversation_app/ui/screens/dashboard/ProfileScreen.dart';
+import 'package:conversation_app/ui/screens/home/home_screen.dart';
 import 'package:conversation_app/ui/screens/library/library_screen.dart';
 import 'package:conversation_app/ui/screens/savedconversations/saved_conversations_screen.dart';
 import 'package:flutter/material.dart';

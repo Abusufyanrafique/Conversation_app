@@ -13,4 +13,38 @@ class AppColors {
   static const textSecondary = Color(0xFF9E8C82);
   static const cardBorder = Color(0xFFE0D4CC);
   static const toggleBg = Color(0xFFE4D8D0);
+
+
+  //  static const Color background   = Color(0xFFF5EDE8);
+  static const Color cardBrown    = Color(0xFFBD8179);
+  static const Color cardLight    = Color(0xFFFAF5F2);
+  static const Color textDark     = Color(0xFF2C2320);
+  static const Color textMedium   = Color(0xFF7A6A65);
+  static const Color textLight    = Color(0xFFAA9590);
+  static const Color white        = Color(0xFFFFFFFF);
+  static const Color heartGrad1   = Color(0xFFCCA6A0);
+  static const Color heartGrad2   = Color(0xFFB5857D);
+  static const Color drawBtn      = Color(0xFF1E1A18);
+  static const Color tagBg        = Color(0x33FFFFFF);
+  static const Color divider      = Color(0xFFE8DDD9);
+  static const Color premiumGold  = Color(0xFFB8955A);
+  static const Color freePlanBg   = Color(0xFFF0E8E4);
+
+  ////====================home screen colors============
+   static const Color homeeveningtext   = Color(0xFF7A6F66);
+   static const Color homemayatext = Color(0xFF2B2622);
+   static  Color planbage = Color(0xFF7A6F66).withOpacity(0.12);
+   static const Color planbagetextcolor = Color(0xFF9E9890);
+   static const Color dotcolor = Color(0xFF7A6F66);
+   static const Color todaycard = Color(0xFF7A6F66);
+   static const Color datetextcolor = Color(0xFF9E9890);
+   static const Color homebrownbigcard = Color(0xFFBA8982);
+   static const Color homedrawbtncolor = Color(0xFF2B2622);
+   static const Color btntextcolor = Color(0xFFF1EDE7);
+   static const Color savebtncolor = Color(0xFFEFE7DE);
+   static const Color savetextbtncolor = Color(0xFF2B2622);
+   static const Color shareiconcolor = Color(0xFF9E9890);
+   static const Color cardnumbers = Color(0xFF1E1B18);
+   static const Color countcardtextcolor = Color(0xFF9E9890);
+   static const Color personalcardcolor = Color(0xFFEFE7DE);
 }

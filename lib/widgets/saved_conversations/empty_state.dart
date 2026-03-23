@@ -16,7 +16,7 @@ class EmptyState extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const StackedCards(),
-        const SizedBox(height: 28),
+        const SizedBox(height: 20),
          Text(
            AppText.nothingsaved,
            style: GoogleFonts.jost(
@@ -26,7 +26,7 @@ class EmptyState extends StatelessWidget {
                       ),
           
         ),
-        const SizedBox(height: 0),
+
          Text(
          AppText.justyet,
          style: GoogleFonts.jost(
@@ -35,7 +35,7 @@ class EmptyState extends StatelessWidget {
                         fontWeight: FontWeight.w300,
                       ),
         ),
-        // const SizedBox(height: 12),
+        const SizedBox(height: 10),
          Text(
           AppText.savedmeaningfulquestions,
           textAlign: TextAlign.center,

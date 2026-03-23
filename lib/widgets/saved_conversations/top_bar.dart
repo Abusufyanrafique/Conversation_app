@@ -39,11 +39,11 @@ class TopBar extends StatelessWidget {
                 ),
                 TextSpan(
                   text: '.',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textPrimary,
-                  ),
+                 style: GoogleFonts.jost(
+                        fontSize: 28, 
+                        color: const Color(0xFF7A6F66),
+                        fontWeight: FontWeight.w300,
+                      ),
                 ),
               ],
             ),

@@ -16,20 +16,20 @@ class StackedCards extends StatelessWidget {
         children: [
           // Back card – tilted left
           Transform.rotate(
-            angle: -0.18,
+            angle: -0.10,
             child: CardTile(
-              margin: EdgeInsets.only(top: 40,right: 100),
+              margin: EdgeInsets.only(top: 80,right: 110),
               imagePath: AppImages.greensavedcard,
               offset: const Offset(-10, -10),
             ),
           ),
           // Back card – tilted right
           Transform.rotate(
-            angle: 0.40,
+            angle: 0.05,
             child: CardTile(
               margin: EdgeInsets.only(
-                top: 10,
-                left: 100
+                top: 50,
+                left: 110
               ),
               imagePath: AppImages.bluesavedcard,
               offset: const Offset(10, 0),
@@ -37,7 +37,7 @@ class StackedCards extends StatelessWidget {
           ),
           // Front card
           CardTile(
-            margin: EdgeInsets.only(top: 20, bottom: 20),
+            margin: EdgeInsets.only(top: 30, bottom: 20),
             imagePath: AppImages.brownsavedcard,
             offset: Offset.zero,
           ),
@@ -55,7 +55,7 @@ class StackedCards extends StatelessWidget {
                   Color(0xFFCCA6A0),
                   Color(0xFFB5857D),
                 ]),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(14),
               ),
               child: Image(image: AssetImage(AppImages.blackheart)),
             ),

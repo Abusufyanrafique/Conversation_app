@@ -10,6 +10,7 @@ import 'package:conversation_app/providers/Paywall/question_screen_provider.dart
 import 'package:conversation_app/providers/Paywall/user_type_screen_provider.dart';
 import 'package:conversation_app/providers/WhoAreYouProvider/who_are_you.dart';
 import 'package:conversation_app/providers/authentication/auth_see_you_screen_provider.dart';
+import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:conversation_app/providers/library/library_provider.dart';
 import 'package:conversation_app/providers/splash_provider/splash_provider.dart';
 import 'package:conversation_app/ui/screens/Splash/splash_screen.dart';
@@ -39,6 +40,8 @@ void main() {
         ChangeNotifierProvider(create: (_)=>AuthSeeYouScreenProvider()),
         ChangeNotifierProvider(create: (_)=>LibraryProvider()),
         ChangeNotifierProvider(create: (_)=>DashboardProvider()),
+        ChangeNotifierProvider(create: (_)=>HomeProvider()),
+     
         
       ],
       child: DevicePreview(

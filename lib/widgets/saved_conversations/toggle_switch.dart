@@ -8,7 +8,10 @@ class ToggleSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 13, 
+        vertical: 2
+        ),
       decoration: BoxDecoration(
         color:Color(0xFF7A6F66).withOpacity(0.18),
         borderRadius: BorderRadius.circular(20),
