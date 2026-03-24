@@ -44,9 +44,10 @@ class _HomeContent extends StatelessWidget {
 
               // ── Date ───────────────────────────────
              Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 20),
+  padding: const EdgeInsets.only(left:  20,right: 20,top: 27),
   child: Row(
     children: [
+      // SizedBox(height: 30,),
       Text(
         date,
         style: GoogleFonts.jost(

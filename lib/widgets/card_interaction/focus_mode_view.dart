@@ -48,7 +48,7 @@ class _FocusModeViewState extends State<FocusModeView>
       child: SlideTransition(
         position: _slideAnim,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               const SizedBox(height: 24),

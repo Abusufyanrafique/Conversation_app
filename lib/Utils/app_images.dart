@@ -31,4 +31,10 @@ class AppImages {
   static const greensavedcard = "assets/images/savedconversations/green_savedcard.png";
   static const brownsavedcard = "assets/images/savedconversations/brown_savedcard.png";
   static const bluesavedcard = "assets/images/savedconversations/blue_savedcard.png";
+  static const backarrow= "assets/images/card_interation/backarrow.png";
+  static const foucsarrowcardscreen ="assets/images/card_interation/backarrow.png";
+  static const guestdotimage =  'assets/icons/authentication/guestmode.png';
+  static const arrowdiamond = "assets/icons/authentication/arrowdiamond.png";
+  static const cricle = "assets/icons/authentication/cricle.png";
+  static const homeandarrow = "assets/icons/home";
 }

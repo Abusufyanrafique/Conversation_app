@@ -110,3 +110,17 @@ const String justyet = " just yet.";
 const String savedmeaningfulquestions = 'Save meaningful questions to revisit them\nlater.';
 const String tapcard = 'Tap ♡ on any card';
 const String broweslibrary = 'Browse the library';
+
+const String  guestmodeislimited =  "Guest mode is limited "; 
+const String savefavourite ="— you won't be able to save favorites or restore purchases. ";
+const String learnmore = "Learn more →";
+const String savedfavourites = 'saved favourites';
+const String cardyoulove = "Cards you love will be remembered between sessions.";
+const String nopurchaserestore = 'No Purchase Restore';
+const String decks = "Decks you've purchased can't be recovered in guest mode.";
+const String twofreedecks = 'Two Free Decks Available';
+const String youcanexplore = 'You can explore both of the decks without an account.';
+const String youarewelcome= "You're welcome here. Just a few things to know before You begin.";
+const String exploring = 'Exploring as\n ';
+const String guest = 'guest?';
+const String contiuneguest = 'CONTINUE AS GUEST';

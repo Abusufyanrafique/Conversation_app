@@ -1,4 +1,7 @@
+import 'package:conversation_app/Utils/app_colors.dart';
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class UnlockBanner extends StatelessWidget {
@@ -11,60 +14,80 @@ class UnlockBanner extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          // color: AppColors.white,
+          color: AppColors.morewaitingcard,
           borderRadius: BorderRadius.circular(16),
-          // border: Border.all(color: AppColors.divider),
+          border: Border.all(
+            color: AppColors.bordercolorwaitingcard,
+            width: 1,
+            ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Heart icon
             Container(
-              width: 34,
-              height: 34,
+              width: 43.99,
+              height: 43.99,
               decoration: BoxDecoration(
-                // color: AppColors.cardBrown.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(10),
+                color:Color(0xFFCFA8A2).withOpacity(0.26),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: Color(0xFFCFA8A2).withOpacity(0.29),
+                  width: 1,
+                )
               ),
-              child: const Icon(
-                Icons.favorite,
-                // color: AppColors.cardBrown,
-                size: 18,
-              ),
+              child: Image(image: AssetImage(AppImages.blackheart))
             ),
             const SizedBox(height: 12),
 
             // Title
             RichText(
-              text: const TextSpan(
+              text:  TextSpan(
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                   // color: AppColors.textDark,
                 ),
                 children: [
-                  TextSpan(text: 'There\'s '),
+                  TextSpan(text: 'There\'s ',
+                  style: GoogleFonts.jost(
+                  fontSize: 20,
+                  color: Color(0xFF2B2622),
+                  fontWeight: FontWeight.w300,
+          
+        ),
+                  ),
                   TextSpan(
                     text: 'more ',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'Playfair Display',
-                    ),
+                  style: GoogleFonts.jost(
+                  fontSize: 20,
+                  color: Color(0xFF7A6F66),
+                  fontWeight: FontWeight.w300,
+          
+        ),
                   ),
-                  TextSpan(text: 'waiting.'),
+                  TextSpan(text: 'waiting.',
+                  style: GoogleFonts.jost(
+                  fontSize: 20,
+                  color: Color(0xFF2B2622),
+                  fontWeight: FontWeight.w300,
+          
+        ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 8),
 
             // Description
-            const Text(
+             Text(
               'Ten more decks, personalized daily prompts, and the ability to save the questions that hit home — all yours.',
-              style: TextStyle(
-                fontSize: 12,
-                // color: AppColors.textMedium,
-                height: 1.5,
-              ),
+                style: GoogleFonts.jost(
+                  fontSize: 10,
+                  color: Color(0xFF7A6F66),
+                  fontWeight: FontWeight.w400,
+          
+        ),
             ),
             const SizedBox(height: 8),
 
@@ -75,38 +98,40 @@ class UnlockBanner extends StatelessWidget {
             const SizedBox(height: 14),
 
             // Disclaimer
-            const Text(
-              'Some conversations only happen when you make space for them.',
-              style: TextStyle(
-                fontSize: 11,
-                // color: AppColors.textLight,
-                fontStyle: FontStyle.italic,
-                height: 1.4,
-              ),
+             Text(
+              'Some conversations only happen\n when you make space for them.',
+              style: GoogleFonts.jost(
+                  fontSize: 12,
+                  color:Color(0xFF7A6F66),
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic,
+          
+        ),
             ),
             const SizedBox(height: 14),
 
             // Unlock button
             SizedBox(
-              width: double.infinity,
+              // width: double.infinity,
               height: 44,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  // backgroundColor: AppColors.drawBtn,
-                  // foregroundColor: AppColors.white,
+                  backgroundColor:Color(0xFF2B2622),
+                  
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                 ),
-                child: const Text(
+                child:  Text(
                   'UNLOCK →',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.5,
-                  ),
+                  style: GoogleFonts.jost(
+                  fontSize: 10,
+                  color:Colors.white,
+                  fontWeight: FontWeight.w400,
+          
+        ),
                 ),
               ),
             ),
@@ -128,19 +153,24 @@ class _FeatureBullet extends StatelessWidget {
         Container(
           width: 14,
           height: 14,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             shape: BoxShape.circle,
-            // color: AppColors.divider,
+            color:Color(0xFFF4EFEA).withOpacity(0.18),
+            border: Border.all(
+              color:Color(0xFFCFA8A2).withOpacity(0.2) ,
+            )
           ),
-          // child: const Icon(Icons.check, size: 8, color: AppColors.textMedium),
+          child: const Icon(Icons.check, size: 8, color: AppColors.textMedium),
         ),
         const SizedBox(width: 6),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 11,
-            // color: AppColors.textMedium,
-          ),
+           style: GoogleFonts.jost(
+                  fontSize: 8.9,
+                  color: Color(0xFF7A6F66),
+                  fontWeight: FontWeight.w400,
+          
+        ),
         ),
       ],
     );

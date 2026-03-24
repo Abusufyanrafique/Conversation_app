@@ -6,26 +6,42 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-
 class UserTypeScreen extends StatelessWidget {
   const UserTypeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final options = UserTypeScreenProvider.audienceOptions;
+    final size = MediaQuery.of(context).size;
+    final h = size.height;
+
+    final isSmall  = h < 680;
+    final isMedium = h < 800;
+
+    double sp(double val) {
+      if (isSmall)  return val * 0.45;
+      if (isMedium) return val * 0.72;
+      return val;
+    }
+
+    double titleSize() {
+      if (isSmall)  return 22;   // 30 → 22
+      if (isMedium) return 26;   // 30 → 26
+      return 30;
+    }
 
     return Scaffold(
       backgroundColor: const Color(0xFFF0E4DC),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20, 
-            vertical: 12
-            ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: sp(12),                     // was: 12
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 8),
+              SizedBox(height: sp(8)),             // was: 8
 
               // Step indicator
               Row(
@@ -42,9 +58,9 @@ class UserTypeScreen extends StatelessWidget {
                   const SizedBox(width: 6),
                   Text(
                     AppText.step,
-                   style: GoogleFonts.jost(
-                      fontSize:9.8,
-                      letterSpacing:2,
+                    style: GoogleFonts.jost(
+                      fontSize: 9.8,
+                      letterSpacing: 2,
                       color: const Color(0xFF7A6F66),
                       fontWeight: FontWeight.w400,
                     ),
@@ -52,60 +68,60 @@ class UserTypeScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: sp(16)),            // was: 16
 
               // Title
               RichText(
                 textAlign: TextAlign.center,
-                text:TextSpan(
+                text: TextSpan(
                   children: [
                     TextSpan(
                       text: AppText.whoareyoun,
-                     style: GoogleFonts.jost(
-                      fontSize:30,
-                      color: const Color(0xFF2B2622),
-                      fontWeight: FontWeight.w300,
-                    ),
+                      style: GoogleFonts.jost(
+                        fontSize: titleSize(),
+                        color: const Color(0xFF2B2622),
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                     TextSpan(
                       text: AppText.talkingwith,
                       style: GoogleFonts.jost(
-                      fontSize:30,
-                      color: const Color(0xFF7A6F66),
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w300,
-                    ),
+                        fontSize: titleSize(),
+                        color: const Color(0xFF7A6F66),
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 10),
+              SizedBox(height: sp(10)),            // was: 10
 
               // Subtitle
               Text(
-                      AppText.feelmoment,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.jost(
-                      fontSize:14,
-                      color: const Color(0xFF6B6460),
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w300,
-                    ),
+                AppText.feelmoment,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.jost(
+                  fontSize: isSmall ? 12 : 14,     // was: fixed 14
+                  color: const Color(0xFF6B6460),
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: sp(20)),            // was: 20
 
               // Grid of cards
               Expanded(
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    childAspectRatio: 1.1,
+                    childAspectRatio: isSmall ? 1.3 : 1.1,  // was: fixed 1.1
                   ),
                   itemCount: options.length,
                   itemBuilder: (context, index) {
@@ -114,7 +130,7 @@ class UserTypeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: sp(16)),            // was: 16
 
               // CTA Button
               Consumer<UserTypeScreenProvider>(
@@ -124,25 +140,25 @@ class UserTypeScreen extends StatelessWidget {
                   return AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     width: double.infinity,
-                    height: 52,
+                    height: isSmall ? 44 : 52,     // was: fixed 52
                     decoration: BoxDecoration(
                       color: hasSelection
                           ? const Color(0xFF2B2622)
-                          : Color(0xFFEFE7DE),
+                          : const Color(0xFFEFE7DE),
                       borderRadius: BorderRadius.circular(15.87),
                       border: Border.all(
                         color: const Color(0xFFFFFFFF),
                         width: 1.5,
                       ),
                     ),
-                      child: TextButton(
+                    child: TextButton(
                       onPressed: hasSelection
                           ? () {
-                                Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                builder: (context) => const QuestionScreen()
-                               ),
+                                  builder: (context) => const QuestionScreen(),
+                                ),
                               );
                               final selected = provider.getSelectedOption(options);
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -166,22 +182,20 @@ class UserTypeScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                    AppText.startwithtwofree,
-                      style: GoogleFonts.jost(
-                      fontSize:12,
-                      color: hasSelection
-                          ? const Color(0xFFF5F0EB)
-                          : Color(0xFF2B2622),
-                      letterSpacing: 2.16,
-                      fontWeight: FontWeight.w400,
-                    ),
+                        AppText.startwithtwofree,
+                        style: GoogleFonts.jost(
+                          fontSize: 12,
+                          color: hasSelection
+                              ? const Color(0xFFF5F0EB)
+                              : const Color(0xFF2B2622),
+                          letterSpacing: 2.16,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   );
                 },
               ),
-
-              
             ],
           ),
         ),

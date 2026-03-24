@@ -45,14 +45,14 @@ class DeckModel {
   final String title;
   final String cardCount;
   final String colorHex;
-  final String emoji;
+   final String imagePath; 
 
   const DeckModel({
     required this.id,
     required this.title,
     required this.cardCount,
-    required this.colorHex,
-    required this.emoji,
+    required this.colorHex, 
+    required this.imagePath,
   });
 }
 

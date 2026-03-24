@@ -38,11 +38,11 @@ class FocusModeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal:72,
-                        vertical: 150,
+                        horizontal:40,
+                        vertical: 120,
                       ),
                       child: SizedBox(
-                        // height: 2,
+                        height: 200,
                         child: FlipFoucsScreenCardWidget(
                           card: provider.cards[index],
                           isFlipped: provider.isFlipped(index),

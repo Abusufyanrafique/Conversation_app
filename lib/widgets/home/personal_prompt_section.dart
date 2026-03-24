@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,7 +48,7 @@ class PersonalPromptSection extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color:Color(0xFFEFE7DE),
+              color:Color(0xFFF4EFEA).withOpacity(0.01),
               borderRadius: BorderRadius.circular(15.27),
               border: Border.all(
                 color:Colors.white,
@@ -103,72 +104,94 @@ class _LockedPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _PersonalLabel(),
-        const SizedBox(height: 10),
-
-        // Blurred placeholder lines
-        _BlurLine(width: double.infinity),
-        const SizedBox(height: 6),
-        _BlurLine(width: 200),
-        const SizedBox(height: 6),
-        _BlurLine(width: 140),
-
-        const SizedBox(height: 10),
-        GestureDetector(
-          onTap: () => context.read<HomeProvider>().unlockPrompt(),
-          child: const Text(
-            'Unlock with premium',
-            style: TextStyle(
-            fontSize: 9.8,
-            color:Color(0xFF9E9890),
-            fontWeight: FontWeight.w400,
-          ),
-          ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0,),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const _PersonalLabel(),
+           const SizedBox(height: 10),
+          //  ================ line container====================home screen======+++++++++++ 
+              Container(
+              width: 21.29,
+              height: 1.5,
+              decoration: BoxDecoration(
+              gradient: LinearGradient(
+        colors: [
+          const Color(0xFF9E9B90).withOpacity(0.35),
+          const Color(0xFF9E9B90).withOpacity(0.0),
+        ],
+      ),
         ),
-      ],
-    );
-  }
-}
-
-class _BlurLine extends StatelessWidget {
-  final double width;
-  const _BlurLine({required this.width});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: 10,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(4),
+      ),
+          const SizedBox(height: 10),
+      
+          // Blurred placeholder lines
+          _BlurLine(
+            text: "Today, notice a moment when you felt genuinely yourself. What made that possible?",
+          ),
+          
+      
+          const SizedBox(height: 13.87),
+          GestureDetector(
+            onTap: () => context.read<HomeProvider>().unlockPrompt(),
+            child: const Text(
+              'Unlock with premium',
+              style: TextStyle(
+              fontSize: 9.8,
+              color:Color(0xFF9E9890),
+              fontWeight: FontWeight.w400,
+            ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
+class _BlurLine extends StatelessWidget {
+  final String text;
+  const _BlurLine({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      maxLines: 3,
+      overflow: TextOverflow.ellipsis,
+      style: GoogleFonts.jost(
+        fontSize: 14.3,
+        fontWeight: FontWeight.w300,
+        fontStyle: FontStyle.italic,
+        color: const Color(0xFF2B2622),
+      ),
+    );
+  }
+}
 class _PersonalLabel extends StatelessWidget {
   const _PersonalLabel();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Icon(Icons.stars_rounded, size: 12, color: AppColors.premiumGold),
-        const SizedBox(width: 4),
-        const Text(
-          'PERSONAL PROMPT',
-          style: TextStyle(
-            fontSize: 9,
-            fontWeight: FontWeight.w700,
-            // color: AppColors.textLight,
-            letterSpacing: 0.8,
-          ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Row(
+        children: [
+          // SizedBox(height: 23.21,),
+          Image(image: AssetImage(AppImages.guestdotimage)),
+          const SizedBox(width: 8),
+           Text(
+            'PERSONAL PROMPT',
+            style: GoogleFonts.jost(
+          fontSize: 8.9,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.47,
+          color: const Color(0xFF9E9890),
         ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

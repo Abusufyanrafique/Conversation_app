@@ -14,15 +14,18 @@ class QuestionScreenCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // height:200 ,
-      // width:327 ,
-      padding: EdgeInsets.all(24),
-      margin: EdgeInsets.symmetric(horizontal: 40,vertical: 15),
+      // width:357 ,
+      padding: EdgeInsets.only(top: 32,left: 28.37,bottom: 47),
+      margin: EdgeInsets.symmetric(
+        horizontal: 40,
+        vertical: 15,
+        ),
       decoration: BoxDecoration(
         color: Color(0xFFF4EFEA).withOpacity(0.01),
         borderRadius: BorderRadius.circular(15.27),
         border: Border.all(
           color: Color(0xffFFFFFF),
-          
+          width: 1.02,
           ),
       ),
       child: Column(
@@ -38,13 +41,30 @@ class QuestionScreenCard extends StatelessWidget {
             fontWeight: FontWeight.w400,
                       ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 18.35,),
+          Container(
+          width: 26.93,
+          height: 1.44,
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+          colors: [
+        Color(0xFF7A6F66),
+        Color(0xFFD4ADA7),
+      ],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ),
+  ),
+),
+          SizedBox(height: 15),
           Padding(
-          padding: const EdgeInsets.only(top: 40.0),
+          padding: const EdgeInsets.only(left: 10),
           child: RichText(
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.start,
           text: TextSpan(
+            
           style: TextStyle(
+            fontSize: 27,
          fontFamily: "PeachBlue",
          color: Color(0xFF2B2622),
       ),
@@ -56,22 +76,22 @@ class QuestionScreenCard extends StatelessWidget {
       ),
     );
   }
-  List<TextSpan> _buildTextSpans(String text) {
+ List<TextSpan> _buildTextSpans(String text) {
   final keyword = "understand";
 
   if (!text.contains(keyword)) {
     return [TextSpan(text: text)];
   }
 
-  final parts = text.split(keyword);
+  final index = text.indexOf(keyword);
 
   return [
-    TextSpan(text: parts[0]),
+    TextSpan(text: text.substring(0, index)),
     TextSpan(
       text: keyword,
-      style: TextStyle(color: Color(0xFF7A6F66)), 
+      style: TextStyle(color: Color(0xFF7A6F66)),
     ),
-    if (parts.length > 1) TextSpan(text: parts[1]),
+    TextSpan(text: text.substring(index + keyword.length)),
   ];
 }
 }

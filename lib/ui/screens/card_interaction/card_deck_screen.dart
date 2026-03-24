@@ -58,64 +58,178 @@ class _DeckMainView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: GestureDetector(
-              onTap: (){
-                 Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const FocusModeScreen()
-          ),
-    );
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FocusModeScreen(),
+                  ),
+                );
               },
               child: Text(
                 'CARD ${provider.currentIndex + 1} OF ${provider.totalCards}',
                 style: GoogleFonts.jost(
-                       fontSize:10,
-                       letterSpacing:1.8,
-                       color: Color(0xFF7A6F66),
-                       fontWeight: FontWeight.w400,
+                  fontSize: 10,
+                  letterSpacing: 1.8,
+                  color: const Color(0xFF7A6F66),
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 6),
-           Text(
-                     AppText.swipe,
-                     style: GoogleFonts.jost(
-                     fontSize:16,
-                      height: 1.0,                    
-                     color: Color(0xFF7A6F66),
-                     fontWeight: FontWeight.w400,
-  ),
-          ),
 
-          // const SizedBox(height:0),
+          const SizedBox(height: 6),
+
+          Text(
+            AppText.swipe,
+            style: GoogleFonts.jost(
+              fontSize: 16,
+              height: 1.0,
+              color: const Color(0xFF7A6F66),
+              fontWeight: FontWeight.w400,
+            ),
+          ),
 
           // ── Card Deck ──
           Expanded(
             child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: provider.flipCard,
               onHorizontalDragEnd: (details) {
                 if (details.primaryVelocity! < -200) {
                   provider.nextCard();
-                } else if (details.primaryVelocity! >200) {
+                } else if (details.primaryVelocity! > 200) {
                   provider.previousCard();
                 }
               },
-              child: const DeckView(),
+              child: AbsorbPointer(
+                child: DeckView(),
+              ),
             ),
           ),
 
           const SizedBox(height: 24),
 
           // ── Navigation ──
-          const NavigationRow(),
+          if (provider.isLastCard) ...[
+            // Focus Mode Button
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FocusModeScreen(),
+                  ),
+                );
+              },
+              child: Container(
+                width: 182,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF2C2420),
+                  borderRadius: BorderRadius.circular(15.27),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 6.82,
+                      height: 6.82,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF7A6F66),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      'ENTER FOCUS MODE',
+                      style: GoogleFonts.jost(
+                        fontSize: 11,
+                        letterSpacing: 1.32,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFFEFE7DE),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ] else ...[
+            // Normal Navigation Row
+            const NavigationRow(),
+          ],
 
           const SizedBox(height: 16),
 
-          // ── Progress ──
-          const ProgressBar(),
+          // ── Progress Bar (sirf last card par hide) ──
+          if (!provider.isLastCard) const ProgressBar(),
+          if (!provider.isLastCard) const SizedBox(height: 16),
 
-          const SizedBox(height: 24),
+          // ── Left / Right Arrows (SIRF last card par show honge) ──
+          if (provider.isLastCard) ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // SizedBox(height: 10,),
+                // Left Arrow → previous card
+                GestureDetector(
+                  onTap: () => provider.previousCard(),
+                  child: Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        Image(
+                          image: AssetImage(
+                              "assets/images/card_interation/backarrow.png")),
+                        const SizedBox(height: 5),
+                        Text(
+                          "Back",
+                          style: GoogleFonts.jost(
+                            fontSize: 9.5,
+                            color: const Color(0xFF9C9590),
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // Right Arrow → reset cards
+                GestureDetector(
+                  onTap: () => provider.resetCards(),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        Image(
+                          image: AssetImage(
+                              "assets/images/card_interation/focusarrow.png")),
+                        const SizedBox(height: 5),
+                        Text(
+                          "Focus",
+                          style: GoogleFonts.jost(
+                            fontSize: 9.5,
+                            color: const Color(0xFF9C9590),
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+          ] else ...[
+            const SizedBox(height: 24),
+          ],
         ],
       ),
     );

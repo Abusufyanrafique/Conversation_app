@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/models/home/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -66,12 +67,12 @@ class HomeProvider extends ChangeNotifier {
 
   // ── Decks ─────────────────────────────────────────────
   final List<DeckModel> decks = const [
-    DeckModel(id: '1', title: 'Intimacy',   cardCount: '32 cards', colorHex: '#C2857B', emoji: '🃏'),
-    DeckModel(id: '2', title: 'Presence',   cardCount: '27 cards', colorHex: '#8FAF9A', emoji: '🧘'),
-    DeckModel(id: '3', title: 'Family',     cardCount: '24 cards', colorHex: '#D4A97A', emoji: '🏠'),
-    DeckModel(id: '4', title: 'Self',       cardCount: '30 cards', colorHex: '#A8B5C8', emoji: '🪞'),
-    DeckModel(id: '5', title: 'Identity',   cardCount: '18 cards', colorHex: '#B5A8CC', emoji: '✨'),
-    DeckModel(id: '6', title: 'New People', cardCount: '22 cards', colorHex: '#B8A99A', emoji: '👥'),
+    DeckModel(id: '1', title: 'Intimacy',   cardCount: '32 cards', colorHex: '#C2857B', imagePath:AppImages.couples, ),
+    DeckModel(id: '2', title: 'Presence',   cardCount: '27 cards', colorHex: '#8FAF9A', imagePath:AppImages.person, ),
+    DeckModel(id: '3', title: 'Family',     cardCount: '24 cards', colorHex: '#D4A97A', imagePath:AppImages.home, ),
+    DeckModel(id: '4', title: 'Self',       cardCount: '30 cards', colorHex: '#B4BAC6', imagePath: AppImages.self,),
+    DeckModel(id: '5', title: 'Identity',   cardCount: '18 cards', colorHex: '#B5A8CC', imagePath:AppImages.team, ),
+    DeckModel(id: '6', title: 'New People', cardCount: '22 cards', colorHex: '#B8A99A', imagePath:AppImages.emoji, ),
   ];
 
   // ── Saved Moments ─────────────────────────────────────

@@ -59,11 +59,11 @@ class PricingPlanTile extends StatelessWidget {
             ),
             boxShadow: isSelected
                 ? [
-                    BoxShadow(
-                      color: const Color(0xFF8B6F47).withAlpha(38),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
-                    )
+                    // BoxShadow(
+                    //   color: const Color(0xFF8B6F47).withAlpha(38),
+                    //   blurRadius: 12,
+                    //   offset: const Offset(0, 4),
+                    // )
                   ]
                 : [],
           ),
@@ -72,15 +72,15 @@ class PricingPlanTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center, 
             children: [
               // ── Radio circle ──
-            AnimatedContainer(
+          AnimatedContainer(
   duration: const Duration(milliseconds: 200),
-  width: width * 0.055,
-  height: width * 0.055,
+  width: width * 0.050,
+  height: width * 0.050,
   decoration: BoxDecoration(
     shape: BoxShape.circle,
     color: isSelected
-        ? const Color(0xFFBF9088) // selected: filled
-        : Colors.transparent,     // unselected: empty
+        ? const Color(0xFFBF9088)
+        : Colors.white,
     border: Border.all(
       color: const Color(0xFF9C8472).withOpacity(0.3),
       width: 1,
@@ -89,13 +89,15 @@ class PricingPlanTile extends StatelessWidget {
   child: Center(
     child: AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      width: isSelected ? width * 0.022 : width * 0.040,  // selected: chota, unselected: bada
-      height: isSelected ? width * 0.022 : width * 0.040,
+      width: isSelected ? width * 0.02 : width * 0.080,
+      height: isSelected ? width * 0.02 : width * 0.080,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
+        color: isSelected
+            ? Colors.white                              // selected: white
+            : const Color(0xFFF5F0EB).withOpacity(0.22), // unselected: #F5F0EB38
         border: Border.all(
-          color: const Color(0xFF9C8472).withOpacity(0.3),
+          color: const Color(0xFF9C8472).withOpacity(0.32),
           width: 1,
         ),
       ),

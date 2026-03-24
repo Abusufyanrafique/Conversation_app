@@ -13,25 +13,21 @@ class SingleCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 230,
-      height:320,
-      decoration: BoxDecoration(
-        color:
-         isFlipped ? Color(0xFFCAA099).withOpacity(0.1)
-          : const Color(0xFFCAA099).withOpacity(0.5),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.18),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: isFlipped ? _QuestionFace(card: card) : _CardFront(card: card),
+    return SizedBox(
+      width: 200,
+      height: 280,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          // color: isFlipped
+          //     ? const Color(0xFFCAA099).withOpacity(0.1)
+          //     : const Color(0xFFC99E97).withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: ClipRRect(
+          child: isFlipped
+              ? _QuestionFace(card: card)
+              : _CardFront(card: card),
+        ),
       ),
     );
   }
@@ -45,26 +41,20 @@ class _CardFront extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      fit: StackFit.expand, // ← Stack parent ko fully fill kare
       children: [
-        // Background image
-
-        Positioned.fill(
-          child: Container(    
-                  
-            child: Image.asset(
-              card.imagePath,
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => const _FallbackCardFront(),
-            ),
-          ),
+        // ── Background image ──
+        Image.asset(
+          card.imagePath,
+          // fit: BoxFit.cover,
+          key: ValueKey(card.imagePath),
+          errorBuilder: (_, __, ___) => const _FallbackCardFront(),
         ),
 
-
-        // Center icon
+        // ── Center icon ──
         const Center(
           child: _ChatIcon(),
         ),
-
       ],
     );
   }
@@ -78,12 +68,10 @@ class _FallbackCardFront extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xFFBF8C8C),
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          SizedBox(height: 20),
-          _ChatIcon(),
-          SizedBox(height: 20),
+        children: [
+          
           Text(
             'CARD TO DRAW',
             style: TextStyle(
@@ -106,33 +94,37 @@ class _QuestionFace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.white,
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Text(
-          //   '"${card.question}"',
-          //   textAlign: TextAlign.center,
-          //   style: const TextStyle(
-          //     fontSize: 15,
-          //     fontStyle: FontStyle.italic,
-          //     color: Color(0xFF4A3535),
-          //     fontFamily: 'Georgia',
-          //     height: 1.7,
-          //   ),
-          // ),
-          // const SizedBox(height: 28),
-          // const Text(
-          //   'THE CONVERSATION COLLECTION',
-          //   style: TextStyle(
-          //     fontSize: 7,
-          //     letterSpacing: 2,
-          //     color: Color(0xFF9E7C7C),
-          //   ),
-          // ),
-        ],
+    // ── SizedBox.expand — ClipRRect ki poori space fill karta hai ──
+    return SizedBox.expand(
+      child: ColoredBox(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '"${card.question}"',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Color(0xFF4A3535),
+                  fontFamily: 'peach-blue',
+                  height: 1.7,
+                ),
+              ),
+              const SizedBox(height: 28),
+              const Text(
+                'THE CONVERSATION COLLECTION',
+                style: TextStyle(
+                  fontSize: 7,
+                  letterSpacing: 2,
+                  color: Color(0xFF9E7C7C),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -144,8 +136,6 @@ class _ChatIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
+    return const SizedBox.shrink();
   }
 }

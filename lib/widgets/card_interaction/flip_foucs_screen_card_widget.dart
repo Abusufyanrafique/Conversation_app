@@ -59,8 +59,8 @@ class _FlipFoucsScreenCardWidgetState extends State<FlipFoucsScreenCardWidget>
     return GestureDetector(
       onTap: widget.onFlip,
       child: SizedBox(
-        height: 355,
-        width: double.infinity,
+        // height: 355,
+        // width: 272,
         child: AnimatedBuilder(
           animation: _animation,
           builder: (context, child) {
@@ -106,9 +106,9 @@ class _CardFace extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: double.infinity,
+      height: 100,
       decoration: BoxDecoration(
-        color: const Color(0xFF3F3A35).withOpacity(0.2),
+        color: const Color(0xFF3F3A35).withOpacity(0.20),
         borderRadius: BorderRadius.circular(20.66),
         border: Border.all(
           color: Colors.white.withOpacity(0.08),
@@ -136,9 +136,12 @@ class _CardFace extends StatelessWidget {
               Text(
                 text,
                 textAlign: TextAlign.center,
-                 style: TextStyle(
-             fontFamily: "PeachBlue",
-             ),
+                 style:TextStyle(
+                  color: Color(0xFFEFE7DE),
+                  fontWeight: FontWeight.w300,
+                  fontFamily: "PeachBlue",
+                  fontSize: 22.8
+                 )
               ),
             ],
           ),

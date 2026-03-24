@@ -13,58 +13,74 @@ class NotificationPermissionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<NotificationProvider>();
+    final double sh = MediaQuery.of(context).size.height;
+    final double sw = MediaQuery.of(context).size.width;
+
+    final bool isTablet = sw >= 768;
+
+    final double hPadding       = isTablet ? sw * 0.10 : 24;
+    final double topSpacing     = sh * 0.028;
+    final double cardBottomSpacing = sh * 0.050;
+    final double headingFontSize   = sh * 0.050;
+    final double subtitleFontSize  = sh * 0.021;
+    final double headingBottomSpacing = sh * 0.020;
+    final double buttonHeight    = sh * 0.065;
+    final double buttonFontSize  = sh * 0.014;
+    final double bottomSpacing   = sh * 0.022;
+    final double betweenButtons  = sh * 0.018;
+    final double labelLeftPad    = isTablet ? 22 : 17;
+    final double headingLeftPad  = isTablet ? 24 : 19;
 
     return Scaffold(
-      backgroundColor:AppColors.focusscreencolor,
+      backgroundColor: AppColors.focusscreencolor,
       body: SafeArea(
-        
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: hPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24),
+              SizedBox(height: topSpacing),
 
               // ── Notification Card ──
               const NotificationCardWidget(),
 
-              const SizedBox(height: 48),
+              SizedBox(height: cardBottomSpacing),
 
               // ── Label ──
               Padding(
-                padding: const EdgeInsets.only(left: 17.0),
+                padding: EdgeInsets.only(left: labelLeftPad),
                 child: Text(
                   AppText.reminder,
                   style: AppTextStyles.jost(
                     fontSize: 10,
-                    color: Color(0xFF9C9590),
+                    color: const Color(0xFF9C9590),
                     letterSpacing: 2.8,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: sh * 0.018),
 
               // ── Heading ──
               Padding(
-                padding: const EdgeInsets.only(left: 19.0),
+                padding: EdgeInsets.only(left: headingLeftPad),
                 child: RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
                         text: AppText.letusbring,
                         style: AppTextStyles.jost(
-                          fontSize: 44,
-                          color: Color(0xFFEFE7DE),
+                          fontSize: headingFontSize,
+                          color: const Color(0xFFEFE7DE),
                           fontWeight: FontWeight.w300,
                         ),
                       ),
                       TextSpan(
                         text: 'day.',
                         style: AppTextStyles.jost(
-                          fontSize: 44,
-                          color: Color(0xFF9C9590),
+                          fontSize: headingFontSize,
+                          color: const Color(0xFF9C9590),
                           fontWeight: FontWeight.w300,
                         ).copyWith(fontStyle: FontStyle.italic),
                       ),
@@ -73,17 +89,17 @@ class NotificationPermissionScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 23),
+              SizedBox(height: headingBottomSpacing),
 
               // ── Subtitle ──
               Padding(
-                padding: const EdgeInsets.only(left: 19.0),
+                padding: EdgeInsets.only(left: headingLeftPad),
                 child: Text(
                   AppText.oneday,
                   style: AppTextStyles.jost(
-                    fontSize: 18,
-                    color: Color(0xFF9C9590),
-                    fontWeight: FontWeight.w300,                 
+                    fontSize: subtitleFontSize,
+                    color: const Color(0xFF9C9590),
+                    fontWeight: FontWeight.w300,
                   ).copyWith(fontStyle: FontStyle.italic),
                 ),
               ),
@@ -108,40 +124,40 @@ class NotificationPermissionScreen extends StatelessWidget {
                         }
                       },
                 child: AnimatedContainer(
-  duration: const Duration(milliseconds: 250),
-  width: double.infinity,
-  height: 56,
-  decoration: BoxDecoration(
-    color: const Color(0xFF2B2622).withOpacity(0.03),
-    borderRadius: BorderRadius.circular(14),
-    border: Border.all(
-      color: const Color(0xFF524C47).withOpacity(0.66),
-      width: 1,
-    ),
-  ),
-  alignment: Alignment.center,
-  child: provider.isLoading
-      ? const SizedBox(
-          height: 20,
-          width: 20,
-          child: CircularProgressIndicator(
-            color: Colors.white54,
-            strokeWidth: 2,
-          ),
-        )
-      : Text(
-          AppText.notification,
-          style: AppTextStyles.jost(
-            fontSize: 12,
-            color: Colors.white,
-            letterSpacing: 2.16,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-),
+                  duration: const Duration(milliseconds: 250),
+                  width: double.infinity,
+                  height: buttonHeight,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF2B2622).withOpacity(0.03),
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: const Color(0xFF524C47).withOpacity(0.66),
+                      width: 1,
+                    ),
+                  ),
+                  alignment: Alignment.center,
+                  child: provider.isLoading
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white54,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : Text(
+                          AppText.notification,
+                          style: AppTextStyles.jost(
+                            fontSize: buttonFontSize,
+                            color: Colors.white,
+                            letterSpacing: 2.16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: betweenButtons),
 
               // ── Not Now ──
               GestureDetector(
@@ -159,7 +175,7 @@ class NotificationPermissionScreen extends StatelessWidget {
                     AppText.notnow,
                     style: AppTextStyles.jost(
                       fontSize: 10,
-                      color: Color(0xFF9C9590),
+                      color: const Color(0xFF9C9590),
                       letterSpacing: 2.8,
                       fontWeight: FontWeight.w400,
                     ),
@@ -167,8 +183,7 @@ class NotificationPermissionScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 10),
-
+              SizedBox(height: bottomSpacing),
             ],
           ),
         ),

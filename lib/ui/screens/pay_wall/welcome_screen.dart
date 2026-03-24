@@ -11,6 +11,17 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    final double topSpacing = screenHeight * 0.060;
+    final double cardStackSpacing = screenHeight * 0.08;
+    final double cardWidth = screenHeight * 0.170;
+    final double cardHeight = screenHeight * 0.23;
+    final double headingFontSize = screenHeight * 0.046;
+    final double subtitleFontSize = screenHeight * 0.018;
+    final double midSpacing = screenHeight * 0.024;
+    final double buttonSpacing = screenHeight * 0.030;
+
     return Scaffold(
       backgroundColor: const Color(0xFFEFE7DE),
       body: SafeArea(
@@ -20,161 +31,151 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               SizedBox(height: 50,),
-                // Cards placeholder (empty space)
-                 Stack(
-                     alignment: Alignment.center,
-                     children: [
-                // Card 4 — sabse peeche
-                ContainerCard(
-                  width: 185,
-                  height: 220,
-                  angle: -22,
-                  x: -20,
-                  y: 8,
-                  color: const Color(0xFFE2D1CC),
-                  shadowColor: const Color(0xFFEFE4DF),
+                SizedBox(height: topSpacing),
+
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    ContainerCard(
+                      width: cardWidth + 5,
+                      height: cardHeight,
+                      angle: -22,
+                      x: -20,
+                      y: 8,
+                      color: const Color(0xFFE2D1CC),
+                      shadowColor: const Color(0xFFEFE4DF),
+                    ),
+                    ContainerCard(
+                      width: cardWidth,
+                      height: cardHeight,
+                      angle: -10,
+                      x: -12,
+                      y: -6,
+                      color: const Color(0xFFE3D0CB),
+                    ),
+                    ContainerCard(
+                      width: cardWidth,
+                      height: cardHeight,
+                      angle: -15,
+                      x: -10,
+                      y: -6,
+                      color: const Color(0xFFD0D6CD).withOpacity(0.7),
+                    ),
+                    ContainerCard(
+                      width: cardWidth,
+                      height: cardHeight,
+                      angle: -3,
+                      x: -1,
+                      y: -17,
+                      color: const Color(0xFFC59D97),
+                      child: Column(
+                        children: [
+                          SizedBox(height: cardHeight * 0.36),
+                          Image(image: AssetImage(AppImages.couples)),
+                          SizedBox(height: cardHeight * 0.05),
+                          Center(
+                            child: Image(
+                              image: AssetImage(AppImages.finallogo),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-            
-                // Card 3 — right side
-                ContainerCard(
-                  width: 180,
-                  height: 220,
-                  angle: -10,
-                  x: -12,
-                  y: -6,
-                  color: const Color(0xFFE3D0CB),
-                ),
-            
-                // Card 2 — halka left
-                ContainerCard(
-                  width: 180,
-                  height: 220,
-                  angle: -15,
-                  x: -10,
-                  y: -6,
-                  color: const Color(0xFFD0D6CD).withOpacity(0.7), 
-                ),
-            
-                // Card 1 — sabse aage
-                ContainerCard(
-                  width: 180,
-                  height: 220,
-                  angle: -3,
-                  x: -1,
-                  y: -17,
-                  color: Color(0xFFC59D97),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 80,),
-                    Image(image: AssetImage(AppImages.couples)),
-                    SizedBox(height: 12,),
-                    Center(
-                    child: Image(
-                      image:AssetImage(
-                      AppImages.finallogo)),
-                  ),
-                  ],)
-                ),
-              ],
-            ),   
-                const SizedBox(height:60),
-            
-                // Brand name
+
+                SizedBox(height: cardStackSpacing),
+
                 Text(
                   AppText.collection,
-                   style: GoogleFonts.jost(
-                          fontSize:10,
-                           color: Color(0xFFA09890),
-                           fontWeight: FontWeight.w300,
-                           letterSpacing: 3.08,
-                      ),
+                  style: GoogleFonts.jost(
+                    fontSize: 10,
+                    color: const Color(0xFFA09890),
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 3.08,
+                  ),
                   textAlign: TextAlign.center,
                 ),
-            
-                const SizedBox(height: 8),
-            
-                // Main heading
-               RichText(
-               textAlign: TextAlign.center,
-               text: TextSpan(
-               children: [
-               TextSpan(
-               text:AppText.questionworth,
-               style: GoogleFonts.jost(
-               fontSize:42,
-               color: Color(0xFF2B2622),
-                fontStyle: FontStyle.italic,
-               fontWeight: FontWeight.w300,
-              
+
+                const SizedBox(height: 12),
+
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: AppText.questionworth,
+                        style: GoogleFonts.jost(
+                          fontSize: headingFontSize,
+                          color: const Color(0xFF2B2622),
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.w300,
+                        ),
                       ),
-      ),
-      TextSpan(
-        text: AppText.sittingwith,
-        style: GoogleFonts.jost(
-        fontSize:42,
-        color: Color(0xFF7A6F66),
-        fontStyle: FontStyle.italic,
-        fontWeight: FontWeight.w300,
-               height:0.8,
+                      TextSpan(
+                        text: AppText.sittingwith,
+                        style: GoogleFonts.jost(
+                          fontSize: headingFontSize,
+                          color: const Color(0xFF7A6F66),
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.w300,
+                          height: 0.8,
+                        ),
                       ),
-      ),
-    ],
-  ),
-),
-            
-                const SizedBox(height:24),
-            
-                // Subtitle
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: midSpacing),
+
                 Text(
                   AppText.littledeeper,
                   style: GoogleFonts.jost(
-                    fontSize: 16,
+                    fontSize: subtitleFontSize,
                     color: const Color(0xFF7A6F66),
                     fontWeight: FontWeight.w300,
-                    // height:2,
                   ),
                   textAlign: TextAlign.center,
                 ),
-            
-                // const Spacer(flex: 1),
-                SizedBox(height:30,),
+
+                SizedBox(height: buttonSpacing),
+
                 BeginButton(
                   text: ' BEGIN → ',
-                  onTap: () { 
+                  onTap: () {
                     Navigator.push(
-                   context,
-                   MaterialPageRoute(
-                   builder: (context) => const UserTypeScreen()
-                  ),
-                 );
-                   },
-                  ),
-                  SizedBox(height:15,),
-                // Already have account
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UserTypeScreen(),
+                      ),
+                    );
+                  },
+                ),
+
+                SizedBox(height: buttonSpacing * 0.5),
+
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                  AppText.alreadyhaveaccount,
+                    AppText.alreadyhaveaccount,
                     style: GoogleFonts.jost(
                       fontSize: 11.5,
-                      letterSpacing:1.61,
+                      letterSpacing: 1.61,
                       color: const Color(0xFF7A6F66),
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
-            
-                const SizedBox(height:8),
-            
-                // Terms text
+
+                const SizedBox(height: 8),
+
                 Text(
-               AppText.privacypolicy,
+                  AppText.privacypolicy,
                   style: GoogleFonts.jost(
                     fontSize: 10,
                     letterSpacing: 0.4,
                     color: const Color(0xFFA09890),
-                    fontWeight: FontWeight.w300
+                    fontWeight: FontWeight.w300,
                   ),
                   textAlign: TextAlign.center,
                 ),

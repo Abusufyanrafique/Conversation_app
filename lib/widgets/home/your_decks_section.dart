@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,6 +48,7 @@ class YourDecksSection extends StatelessWidget {
                 onTap: () {},
                 child: Row(
                   children:  [
+                    // Image(image: AssetImage(AppImages.homeandarrow)),
                     Text(
                       'All decks',
           style: GoogleFonts.jost(

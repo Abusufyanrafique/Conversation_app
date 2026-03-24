@@ -47,4 +47,7 @@ class AppColors {
    static const Color cardnumbers = Color(0xFF1E1B18);
    static const Color countcardtextcolor = Color(0xFF9E9890);
    static const Color personalcardcolor = Color(0xFFEFE7DE);
+   static  Color decktiletextcolor = Color(0xFFFFFFFF).withOpacity(0.46);
+   static  Color morewaitingcard = Color(0xFFFF4EFEA).withOpacity(0.18);
+   static Color bordercolorwaitingcard = Color(0xFFCFA8A2).withOpacity(0.28);
 }

@@ -15,21 +15,18 @@ class RestoreYourCollectionScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final h = size.height;
 
-    // Screen height breakpoints
-    final isSmall  = h < 680;   // iPhone SE, small Android
-    final isMedium = h < 800;   // normal phones
+    final isSmall  = h < 680;
+    final isMedium = h < 800;
 
-    // Responsive spacing — shrinks on smaller screens
     double sp(double val) {
       if (isSmall)  return val * 0.45;
       if (isMedium) return val * 0.72;
       return val;
     }
 
-    // Responsive title font size
     double titleSize() {
-      if (isSmall)  return 36;
-      if (isMedium) return 42;
+      if (isSmall)  return 28;   // 36 → 28
+      if (isMedium) return 38;   // 42 → 38
       return 48;
     }
 
@@ -37,32 +34,30 @@ class RestoreYourCollectionScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFEFE7DE),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 10,right: 10,),
-          padding: const EdgeInsets.symmetric(horizontal:20),
-          decoration: BoxDecoration(
-          color: const Color(0xFFEFE7DE),
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: const BoxDecoration(
+            color: const Color(0xFFEFE7DE),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: 37.07,),
-            AuthScreenRow(
-             imagePath: AppImages.foucsarrow,
-             text: AppText.resetpassword,
-             onTap: () {},
+              SizedBox(height: sp(37)),       // was: 37.07 fixed
+              AuthScreenRow(
+                imagePath: AppImages.foucsarrow,
+                text: AppText.resetpassword,
+                onTap: () {},
               ),
-              SizedBox(height: 48,),
-              // ─── Empty State Widget ───
+              SizedBox(height: sp(48)),       // was: 48 fixed
               Center(child: const EmptyStateWidget()),
-              SizedBox(height: 29,),
-              // ─── Header ───
+              SizedBox(height: sp(29)),       // was: 29 fixed
               AuthHeaderSection(
-                topLabel:'',
+                topLabel: '',
                 title: '',
                 subtitle: AppText.enteryouremail,
                 subtitleColor: const Color(0xFF7A6F66),
-                subtitleFontSize: isSmall ? 13 : 16,
+                subtitleFontSize: isSmall ? 12 : 16,
                 topLabelFontSize: 10,
                 topLabelColor: const Color(0xFF7A6F66),
                 titleSpans: [
@@ -75,7 +70,7 @@ class RestoreYourCollectionScreen extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text:AppText.ncollection,
+                    text: AppText.ncollection,
                     style: GoogleFonts.jost(
                       fontSize: titleSize(),
                       color: const Color(0xFF7A6F66),
@@ -85,11 +80,8 @@ class RestoreYourCollectionScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               SizedBox(height: sp(19)),
               const RestoreOptionsSection(),
-              
-
             ],
           ),
         ),

@@ -23,6 +23,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+    print('APP STARTED');
   runApp(
     MultiProvider(
       providers: [
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const DashBoardScreen(),
+      home: const SplashScreen(),
     );
   }
 }

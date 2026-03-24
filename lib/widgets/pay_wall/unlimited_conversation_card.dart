@@ -64,7 +64,7 @@ class UnlimitedConversationCard extends StatelessWidget {
               ),
             ),
       
-            const SizedBox(width: 7),
+            const SizedBox(width: 12.37),
       
             // Text Content
             Expanded(

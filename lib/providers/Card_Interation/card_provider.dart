@@ -1,45 +1,37 @@
 import 'package:conversation_app/models/conversation_card.dart';
 import 'package:flutter/material.dart';
 
-
 class CardProvider extends ChangeNotifier {
-  // Replace imagePath values with your actual asset paths
   final List<ConversationCard> _cards = const [
     ConversationCard(
       id: 1,
       question: "What would you want me to truly understand about the way you love?",
-      imagePath: 'assets/images/card_interation/swipe_card1.png', 
-      height:320, 
-      width:246 , 
-      angle:20, 
-     
+      imagePath: 'assets/images/card_interation/swipe_card1.png',
+      height: 320,
+      width: 26,
+      angle: 20,
     ),
     ConversationCard(
       id: 2,
       question: "What moment in your life shaped who you are the most?",
-      imagePath: 'assets/images/card_interation/swipe_card2.png', 
-      height:320 , 
-      width: 346, 
-      angle: null, 
-      
+      imagePath: 'assets/images/card_interation/swipe_card2.png',
+      height: 320,
+      width: 346,
+      angle: null,
     ),
     ConversationCard(
       id: 3,
       question: "What is something you wish people asked you more often?",
-      imagePath: 'assets/images/card_interation/swipe_card3.png', 
-      height: 320, 
-      width: 346, 
-      // angle: null, 
-      
+      imagePath: 'assets/images/card_interation/swipe_card3.png',
+      height: 320,
+      width: 346,
     ),
     ConversationCard(
       id: 4,
       question: "What does a perfect day look like for you?",
-      imagePath: 'assets/images/card_interation/swipe_card4.png', 
-      height: 320, 
-      width: 346, 
-      // angle: null, 
-     
+      imagePath: 'assets/images/card_interation/swipe_card4.png',
+      height: 320,
+      width: 346,
     ),
   ];
 
@@ -47,6 +39,7 @@ class CardProvider extends ChangeNotifier {
   bool _isFocusMode = false;
   bool _isCardFlipped = false;
   bool _isAnimating = false;
+  Set<int> _flippedIndexes = <int>{}; // ← final hata diya
 
   // ─── Getters ───────────────────────────────────────────
   List<ConversationCard> get cards => _cards;
@@ -57,10 +50,10 @@ class CardProvider extends ChangeNotifier {
   bool get isAnimating => _isAnimating;
   bool get isFirstCard => _currentIndex == 0;
   bool get isLastCard => _currentIndex == _cards.length - 1;
-
+  Set<int> get flippedCardIds => _flippedIndexes;
+  bool get allCardsFlipped => _flippedIndexes.length == _cards.length;
   ConversationCard get currentCard => _cards[_currentIndex];
 
-  // Cards visible in the deck (current + next for stacked look)
   List<ConversationCard> get visibleDeckCards {
     final result = <ConversationCard>[];
     for (int i = _currentIndex;
@@ -77,7 +70,6 @@ class CardProvider extends ChangeNotifier {
       _isAnimating = true;
       _isCardFlipped = false;
       notifyListeners();
-
       Future.delayed(const Duration(milliseconds: 400), () {
         _currentIndex++;
         _isAnimating = false;
@@ -91,7 +83,6 @@ class CardProvider extends ChangeNotifier {
       _isAnimating = true;
       _isCardFlipped = false;
       notifyListeners();
-
       Future.delayed(const Duration(milliseconds: 400), () {
         _currentIndex--;
         _isAnimating = false;
@@ -102,6 +93,16 @@ class CardProvider extends ChangeNotifier {
 
   void flipCard() {
     _isCardFlipped = !_isCardFlipped;
+    _flippedIndexes.add(_currentIndex); // ← hamesha add, if nahi
+    debugPrint('>>>index=$_currentIndex set=$_flippedIndexes ${_flippedIndexes.length}/${_cards.length} allFlipped=$allCardsFlipped<<<');
+    notifyListeners();
+  }
+
+  void resetCards() {
+    _currentIndex = 0;
+    _isCardFlipped = false;
+    _isAnimating = false;
+    _flippedIndexes = <int>{}; 
     notifyListeners();
   }
 

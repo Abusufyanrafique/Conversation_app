@@ -15,25 +15,22 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final auth = context.watch<AuthSeeYouScreenProvider>();
+    final auth = context.watch<AuthSeeYouScreenProvider>();
     final size = MediaQuery.of(context).size;
     final h = size.height;
 
-    // Screen height breakpoints
-    final isSmall  = h < 680;   // iPhone SE, small Android
-    final isMedium = h < 800;   // normal phones
+    final isSmall  = h < 680;
+    final isMedium = h < 800;
 
-    // Responsive spacing — shrinks on smaller screens
     double sp(double val) {
       if (isSmall)  return val * 0.45;
       if (isMedium) return val * 0.72;
       return val;
     }
 
-    // Responsive title font size
     double titleSize() {
-      if (isSmall)  return 36;
-      if (isMedium) return 42;
+      if (isSmall)  return 28;   // 36 → 28
+      if (isMedium) return 38;   // 42 → 38
       return 48;
     }
 
@@ -41,28 +38,28 @@ class ForgotPasswordScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFEFE7DE),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 10,right: 10,),
-          padding: const EdgeInsets.symmetric(horizontal:20),
-          decoration: BoxDecoration(
-          color: const Color(0xFFEFE7DE),
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: const BoxDecoration(
+            color: Color(0xFFEFE7DE),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: 37.07,),
-            AuthScreenRow(
-             imagePath: AppImages.foucsarrow,
-             text: AppText.resetpassword,
-             onTap: () {},
+              SizedBox(height: sp(37)),         // was: 37.07
+              AuthScreenRow(
+                imagePath: AppImages.foucsarrow,
+                text: AppText.resetpassword,
+                onTap: () {},
               ),
-              SizedBox(height: 48,),
+              SizedBox(height: sp(48)),         // was: 48
               AuthHeaderSection(
-                topLabel:'',
+                topLabel: '',
                 title: '',
                 subtitle: AppText.resetlink,
                 subtitleColor: const Color(0xFF7A6F66),
-                subtitleFontSize: isSmall ? 13 : 16,
+                subtitleFontSize: isSmall ? 12 : 16,
                 topLabelFontSize: 10,
                 topLabelColor: const Color(0xFF7A6F66),
                 titleSpans: [
@@ -72,70 +69,68 @@ class ForgotPasswordScreen extends StatelessWidget {
                       fontSize: titleSize(),
                       color: const Color(0xFF2B2622),
                       fontWeight: FontWeight.w300,
-                       fontStyle: FontStyle.italic,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
-                  
                 ],
               ),
-              SizedBox(height: 40,),
-               AuthSeeYouScreenTextField(
-              label: 'EMAIL ADDRESS',
-              hint: 'your@email.com',
-              controller: auth.emailController,
-            ),
-
-            const SizedBox(height: 16),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-            Text(
-              'Resend in 30 seconds?',
-             style: GoogleFonts.jost(
-                      fontSize:12,
+              SizedBox(height: sp(40)),         // was: 40
+              AuthSeeYouScreenTextField(
+                label: 'EMAIL ADDRESS',
+                hint: 'your@email.com',
+                controller: auth.emailController,
+              ),
+              SizedBox(height: sp(16)),         // was: 16
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Resend in 30 seconds?',
+                    style: GoogleFonts.jost(
+                      fontSize: 12,
                       color: const Color(0xFF7A6F66),
                       letterSpacing: 0.96,
                       fontWeight: FontWeight.w300,
-                      
                     ),
-            )
-          ],),
-          SizedBox(height: 180,),
-          // Spacer(),
-          PrimaryButton(
-                text:AppText.sendresentlink,
+                  ),
+                ],
+              ),
+              SizedBox(height: sp(380)),        // was: 180 — yeh sabse bada culprit tha
+              PrimaryButton(
+                text: AppText.sendresentlink,
                 onTap: () {
-
                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CheckYourEmailScreen()),
-                 );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckYourEmailScreen(),
+                    ),
+                  );
                 },
               ),
-              SizedBox(height:12.8 ,),
+              SizedBox(height: sp(12)),         // was: 12.8
               Center(
-  child: RichText(
-    text: TextSpan(
-      style: GoogleFonts.jost(
-        fontSize: 12,
-        color:  Colors.black,
-        letterSpacing: 0.96,
-        fontWeight: FontWeight.w200,
-      ),
-      children: [
-         TextSpan(text: 'Back to sign in',
-        style: GoogleFonts.jost(
-        fontSize: 10,
-        color:  Colors.black,
-        letterSpacing: 0.96,
-        fontWeight: FontWeight.w300,
-      ),
-        ),
-      ],
-    ),
-  ),
-),
+                child: RichText(
+                  text: TextSpan(
+                    style: GoogleFonts.jost(
+                      fontSize: 12,
+                      color: Colors.black,
+                      letterSpacing: 0.96,
+                      fontWeight: FontWeight.w200,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'Back to sign in',
+                        style: GoogleFonts.jost(
+                          fontSize: 10,
+                          color: Colors.black,
+                          letterSpacing: 0.96,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

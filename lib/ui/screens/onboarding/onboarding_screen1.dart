@@ -41,7 +41,7 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
 
               /// Flower Image
               Image.asset(
-                AppImages.onboardingflower,
+                AppImages.flowerimage,
                 height: size.height * 0.28,
                 fit: BoxFit.contain,
               ),
@@ -124,12 +124,14 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
               const Spacer(),
 
               /// Begin Button
-              CustomButton(
-                text: "BEGIN",
-                onTap: () {},
-                useGradient: false,
-                backgroundColor: const Color(0xffEFE7DE),
-                textColor: const Color(0xFF1C1B1A),
+              Center(
+                child: CustomButton(
+                  text: "BEGIN",
+                  onTap: () {},
+                  useGradient: false,
+                  backgroundColor: const Color(0xffEFE7DE),
+                  textColor: const Color(0xFF1C1B1A),
+                ),
               ),
 
               SizedBox(height: size.height * 0.03),

@@ -1,5 +1,7 @@
+import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/models/home/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class DeckTile extends StatelessWidget {
@@ -33,14 +35,18 @@ class DeckTile extends StatelessWidget {
           children: [
             // Emoji icon circle
             Container(
-              width: 34,
+              width: 18,
               height: 34,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.25),
-                borderRadius: BorderRadius.circular(10),
-              ),
+             
               alignment: Alignment.center,
-              child: Text(deck.emoji, style: const TextStyle(fontSize: 16)),
+              child:Image.asset(
+              deck.imagePath,
+              width: 28,
+              height: 28,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.image_not_supported, size: 28),
+),
             ),
 
             // Title + count
@@ -49,19 +55,22 @@ class DeckTile extends StatelessWidget {
               children: [
                 Text(
                   deck.cardCount,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.white.withOpacity(0.75),
-                  ),
+                style: GoogleFonts.jost(
+                 fontSize:9,
+                 color:AppColors.decktiletextcolor,
+                 fontWeight: FontWeight.w400,
+                
+                        ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   deck.title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+                  style: GoogleFonts.jost(
+                 fontSize:20,
+                 color:AppColors.decktiletextcolor,
+                 fontWeight: FontWeight.w300,
+                
+                        ),
                 ),
               ],
             ),

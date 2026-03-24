@@ -32,7 +32,7 @@ class HomeHeader extends StatelessWidget {
                 
                         ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 6),
                 RichText(
                   text: TextSpan(
                     children: [

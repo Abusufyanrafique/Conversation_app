@@ -6,15 +6,15 @@ class QuestionScreenProvider extends ChangeNotifier {
 
   final List<QuestionScreenModel> cards = [
     QuestionScreenModel(
-      title: "CARD 1 INTIMACY", 
-      question: " What would you want me to truly understand about the way you love?"
+      title: "CARD 1  INTIMACY", 
+      question: " What would you want me\n to truly understand about\n the way you love?"
       ),
     QuestionScreenModel(
-      title: "CARD 2 INTIMACY", 
+      title: "CARD 2  INTIMACY", 
       question: "When do you feel most loved without any words at all?"
       ),
     QuestionScreenModel(
-      title: "CARD 3 INTIMACY", 
+      title: "CARD 3  INTIMACY", 
       question: "What makes a great conversation memorable?"
       ),
   ];

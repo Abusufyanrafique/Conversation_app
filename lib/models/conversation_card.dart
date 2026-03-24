@@ -1,5 +1,3 @@
-import 'package:conversation_app/models/saved_conversation/saved_conversation.dart';
-
 class ConversationCard {
   final int id;
   final String? question;

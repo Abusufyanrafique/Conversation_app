@@ -16,7 +16,7 @@ class HeaderSection extends StatelessWidget {
           SizedBox(height:10),
           Image(
             height: 53,
-            width: 44,
+            width: 50,
             image: AssetImage(AppImages.couples)),
           SizedBox(height:5),
          RichText(
@@ -32,7 +32,7 @@ class HeaderSection extends StatelessWidget {
         TextSpan(
           text: AppText.keepconversation, 
           style: GoogleFonts.jost(
-                 fontSize:36,
+                 fontSize:34,
                  color: Color(0xFF221F1C),
                   fontStyle: FontStyle.italic,
                  fontWeight: FontWeight.w300,
@@ -58,7 +58,7 @@ class HeaderSection extends StatelessWidget {
             AppText.unlockdeeper,
             textAlign: TextAlign.center,
              style: GoogleFonts.jost(
-                 fontSize:16,
+                 fontSize:14,
                  color: Color(0xFF6B6460),
                   fontStyle: FontStyle.italic,
                  fontWeight: FontWeight.w300,

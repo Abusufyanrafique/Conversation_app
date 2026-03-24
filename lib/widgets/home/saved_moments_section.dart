@@ -1,6 +1,6 @@
-import 'package:conversation_app/Utils/app_colors.dart';
 import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SavedMomentsSection extends StatelessWidget {
@@ -15,15 +15,32 @@ class SavedMomentsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Row(children: [
+            Text(
             'SAVED MOMENTS',
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              // color: AppColors.textLight,
-              letterSpacing: 1.2,
+           style: GoogleFonts.jost(
+                 fontSize:9.2,
+                 color:Color(0xFF9E9890),
+                 letterSpacing: 2.8,
+                 fontWeight: FontWeight.w400,
+                
+                        ),
+          ),
+          SizedBox(width: 9,),
+           Expanded(
+            child: Container(
+              height: 0.98,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0x2E9E9890), // #9E98902E - 18% opacity
+                    Color(0x009E9890), // #9E989000 - 0% opacity
+                  ],
+                ),
+              ),
             ),
           ),
+           ],),
           const SizedBox(height: 12),
           SizedBox(
             height: 120,
@@ -54,9 +71,11 @@ class _MomentCard extends StatelessWidget {
       width: width,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color:Color(0xFFF4EFEA).withOpacity(0.01),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.divider),
+        border: Border.all(
+          color: Colors.white
+          ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

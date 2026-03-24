@@ -68,6 +68,7 @@ class QuestionScreen extends StatelessWidget {
             //  PageView for swipeable cards
             SizedBox(
               height: 261,
+              width: 350,
               child: PageView.builder(
                 controller: provider.pageController,
                 onPageChanged: provider.onPageChanged,

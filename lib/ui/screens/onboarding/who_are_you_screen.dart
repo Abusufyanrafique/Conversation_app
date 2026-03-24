@@ -13,6 +13,18 @@ class WhoAreYouScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = context.watch<DeckProvider>();
     final decks = provider.decks;
+    final double sh = MediaQuery.of(context).size.height;
+
+    final double topSpacing    = sh * 0.028;
+    final double titleSize     = sh * 0.044;
+    final double gap1          = sh * 0.007;  // after label
+    final double gap2          = sh * 0.009;  // after title block
+    final double gap3          = sh * 0.026;  // after subtitle
+    final double gap4          = sh * 0.012;  // between grid and 5th card
+    final double gridItemH     = sh * 0.118;
+    final double gridItemW     = gridItemH * (144 / 103);
+    final double fifthCardH    = sh * 0.160;
+    final double bottomSpacing = sh * 0.020;
 
     return Scaffold(
       backgroundColor: const Color(0xFFEFE7DE),
@@ -24,9 +36,9 @@ class WhoAreYouScreen extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 24),
+                    SizedBox(height: topSpacing),
 
-                    /// Label
+                    // Label
                     Text(
                       AppText.yourfirstdeck,
                       style: AppTextStyles.jost(
@@ -37,26 +49,26 @@ class WhoAreYouScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    SizedBox(height: gap1),
 
-                    /// Title
+                    // Title
                     Text(
                       AppText.whoareyou,
                       style: AppTextStyles.jost(
-                        fontSize: 38,
+                        fontSize: titleSize,
                         color: const Color(0xFF2B2622),
                         fontWeight: FontWeight.w300,
                       ),
                     ),
 
-                    /// RichText
+                    // RichText
                     RichText(
                       text: TextSpan(
                         children: [
                           TextSpan(
                             text: AppText.here,
                             style: AppTextStyles.jost(
-                              fontSize: 38,
+                              fontSize: titleSize,
                               color: const Color(0xFF2B2622),
                               fontWeight: FontWeight.w300,
                             ),
@@ -64,7 +76,7 @@ class WhoAreYouScreen extends StatelessWidget {
                           TextSpan(
                             text: AppText.for1,
                             style: AppTextStyles.jost(
-                              fontSize: 38,
+                              fontSize: titleSize,
                               color: const Color(0xFF9C9590),
                               fontWeight: FontWeight.w300,
                             ),
@@ -73,9 +85,9 @@ class WhoAreYouScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 8),
+                    SizedBox(height: gap2),
 
-                    /// Subtitle
+                    // Subtitle
                     Text(
                       AppText.youcanalways,
                       style: AppTextStyles.jost(
@@ -86,47 +98,44 @@ class WhoAreYouScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 28),
+                    SizedBox(height: gap3),
 
-                    /// 2x2 Grid
-                   GridView.count(
-  crossAxisCount: 2,
-  shrinkWrap: true,
-  physics: const NeverScrollableScrollPhysics(),
-  crossAxisSpacing: 12,
-  mainAxisSpacing: 12,
-  childAspectRatio: 144 / 103, // width / height
-  children: decks
-      .take(4)
-      .map(
-        (deck) => SizedBox(
-          height: 103,
-          width: 144,
-          child: DeckCard(
-            deck: deck,
-            isTappable: false, height: 0,
-          ),
-        ),
-      )
-      .toList(),
-),
+                    // 2x2 Grid
+                    GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: gridItemW / gridItemH,
+                      children: decks
+                          .take(4)
+                          .map(
+                            (deck) => DeckCard(
+                              deck: deck,
+                              isTappable: false,
+                              height: 0,
+                            ),
+                          )
+                          .toList(),
+                    ),
 
-                    const SizedBox(height: 12),
+                    SizedBox(height: gap4),
 
-                    /// 5th card (Full Width)
+                    // 5th card (Full Width)
                     if (decks.isNotEmpty)
                       SizedBox(
                         width: double.infinity,
                         child: DeckCard(
                           deck: decks.last,
-                          height: 107,
-                          width: 144,
+                          height: fifthCardH,
+                          width: double.infinity,
                         ),
                       ),
 
                     const Spacer(),
 
-                    /// Continue Button
+                    // Continue Button
                     Custom_Button_who(
                       text: 'CONTINUE',
                       isActive: provider.hasSelection,
@@ -137,9 +146,9 @@ class WhoAreYouScreen extends StatelessWidget {
                       },
                     ),
 
-                    const SizedBox(height: 16),
+                    SizedBox(height: bottomSpacing * 0.8),
 
-                    /// Skip
+                    // Skip
                     Center(
                       child: Text(
                         AppText.skipfornow,
@@ -152,7 +161,7 @@ class WhoAreYouScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 24),
+                    // SizedBox(height: bottomSpacing),
                   ],
                 ),
         ),

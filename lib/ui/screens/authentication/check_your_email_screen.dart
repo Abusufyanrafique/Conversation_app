@@ -12,108 +12,114 @@ class CheckYourEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final auth = context.watch<AuthSeeYouScreenProvider>();
+    final auth = context.watch<AuthSeeYouScreenProvider>();
     final size = MediaQuery.of(context).size;
     final h = size.height;
 
-    // Screen height breakpoints
-    final isSmall  = h < 680;   // iPhone SE, small Android
-    final isMedium = h < 800;   // normal phones
+    final isSmall  = h < 680;
+    final isMedium = h < 800;
 
-    // Responsive spacing — shrinks on smaller screens
     double sp(double val) {
       if (isSmall)  return val * 0.45;
       if (isMedium) return val * 0.72;
       return val;
     }
 
-    // Responsive title font size
     double titleSize() {
-      if (isSmall)  return 36;
-      if (isMedium) return 42;
-      return 48;
+      if (isSmall)  return 22;   // 36 → 22
+      if (isMedium) return 26;   // 42 → 26
+      return 30;
     }
 
     return Scaffold(
       backgroundColor: const Color(0xFFEFE7DE),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 10,right: 10,),
-          padding: const EdgeInsets.symmetric(horizontal:20),
-          decoration: BoxDecoration(
-          color: const Color(0xFFEFE7DE),
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: const BoxDecoration(
+            color: Color(0xFFEFE7DE),
           ),
           child: GestureDetector(
             onTap: () {
-             Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const BeginYourStoryScreen()),
-                 );  
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BeginYourStoryScreen(),
+                ),
+              );
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: 37.07,),
-              AuthScreenRow(
-               imagePath: AppImages.foucsarrow,
-               text: AppText.resetpassword,
-               onTap: () {},
+                SizedBox(height: sp(37)),           // was: 37.07
+                AuthScreenRow(
+                  imagePath: AppImages.foucsarrow,
+                  text: AppText.resetpassword,
+                  onTap: () {},
                 ),
-                SizedBox(height: 48,),
+                SizedBox(height: sp(48)),           // was: 48
                 Center(
                   child: Container(
-                    height: 61,
-                    width: 61,
+                    height: isSmall ? 48 : 61,      // was: fixed 61
+                    width:  isSmall ? 48 : 61,      // was: fixed 61
                     decoration: BoxDecoration(
-                      color: Color(0xFFEFE7DE),
+                      color: const Color(0xFFEFE7DE),
                       borderRadius: BorderRadius.all(Radius.circular(15.87)),
                       border: Border.all(
                         color: Colors.white,
-                        width: 1.06
-                      )
+                        width: 1.06,
+                      ),
                     ),
                     child: Image(
-                      image: AssetImage(AppImages.email)),
+                      image: AssetImage(AppImages.email),
+                    ),
                   ),
                 ),
-                SizedBox(height: 14,),
+                SizedBox(height: sp(14)),           // was: 14
                 Center(
-                  child: Text(AppText.checkyour,
-                   style: GoogleFonts.jost(
-                    fontSize: 30,
-                    color: const Color(0xFF2B2622),
-                    letterSpacing: 0.96,
-                     fontWeight: FontWeight.w300,
-                        ),
-                  ),
-                ),
-                Center(
-                  child: Text(AppText.email1,
-                   style: GoogleFonts.jost(
-                   fontSize: 30,
-                   color: const Color(0xFF7A6F66),
-                   letterSpacing: 0.96,
-                     fontStyle: FontStyle.italic,
-                   fontWeight: FontWeight.w300,
-                        ),
+                  child: Text(
+                    AppText.checkyour,
+                    style: GoogleFonts.jost(
+                      fontSize: titleSize(),
+                      color: const Color(0xFF2B2622),
+                      letterSpacing: 0.96,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
                 Center(
                   child: Text(
-                    textAlign: TextAlign.center,
-                    AppText.arrive,          
-                    style: GoogleFonts.jost(                   
-                    fontSize: 14,
-                    
-                    color: const Color(0xFF2B2622),
-                    fontWeight: FontWeight.w300,
-                        ),
+                    AppText.email1,
+                    style: GoogleFonts.jost(
+                      fontSize: titleSize(),
+                      color: const Color(0xFF7A6F66),
+                      letterSpacing: 0.96,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
-                SizedBox(height:82,),
-                Center(child: Image(image: AssetImage(AppImages.flowerimage))),
-               
+                SizedBox(height: sp(8)),
+                Center(
+                  child: Text(
+                    AppText.arrive,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.jost(
+                      fontSize: isSmall ? 12 : 14,  // was: fixed 14
+                      color: const Color(0xFF2B2622),
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ),
+                SizedBox(height: sp(82)),           // was: 82 — bara culprit
+                Center(
+                  child: Image(
+                    image: AssetImage(AppImages.flowerimage),
+                    height: isSmall ? 160 : null,   // shrink image on small screens
+                  ),
+                ),
               ],
             ),
           ),
