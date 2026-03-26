@@ -115,24 +115,34 @@ class AllSetScreen extends StatelessWidget {
                            );
                             context.read<AllSetProvider>().drawFirstCard();
                           },
-                          child: Container(
-                          height: size.height * 0.07,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF2B2622),
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                          color: const Color(0xFF524C47).withOpacity(0.66),
-                          width: 1,
+                          child:Container(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(14),
+    gradient:  LinearGradient(
+      colors: [
+        Color(0xFF524C47),
+        Color(0xA8524C47).withOpacity(0.66),
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
     ),
   ),
-                     alignment: Alignment.center,
-                      child: Text(
-                      AppText.drawyourcard,
-                      style: AppTextStyles.jost(
-                      fontSize: size.width * 0.032,
-                      color: Colors.white,
-                      letterSpacing: 2.16,
-                      fontWeight: FontWeight.w400,
+  padding: const EdgeInsets.all(1),
+  child: Container(
+    height: size.height * 0.07,
+    decoration: BoxDecoration(
+      color: const Color(0xFF2B2622),
+      borderRadius: BorderRadius.circular(13),
+    ),
+    alignment: Alignment.center,
+    child: Text(
+      AppText.drawyourcard,
+      style: AppTextStyles.jost(
+        fontSize: size.width * 0.032,
+        color: Colors.white,
+        letterSpacing: 2.16,
+        fontWeight: FontWeight.w400,
+      ),
     ),
   ),
 ),

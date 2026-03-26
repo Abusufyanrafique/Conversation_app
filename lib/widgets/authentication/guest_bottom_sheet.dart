@@ -209,10 +209,8 @@ class _InfoCard extends StatelessWidget {
           ),
           // Close icon
           Padding(
-            padding: const EdgeInsets.only(top: 16.0,left: 5),
-            child: Icon(
-              Icons.close, size: 22, 
-              color: Color(0xFF7A6F66)),
+            padding: const EdgeInsets.only(top: 24.0,left: 5),
+            child:Image(image: AssetImage(AppImages.closeicon)),
           ),
         ],
       ),

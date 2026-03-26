@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/providers/Card_Interation/card_provider.dart';
 import 'package:conversation_app/ui/screens/card_interaction/foucs_mode_screen.dart';
@@ -142,7 +143,7 @@ class _DeckMainView extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      'ENTER FOCUS MODE',
+                      AppText.enterfoucsmode,
                       style: GoogleFonts.jost(
                         fontSize: 11,
                         letterSpacing: 1.32,
@@ -184,10 +185,10 @@ class _DeckMainView extends StatelessWidget {
                       children: [
                         Image(
                           image: AssetImage(
-                              "assets/images/card_interation/backarrow.png")),
+                              AppImages.backarrowwhite)),
                         const SizedBox(height: 5),
                         Text(
-                          "Back",
+                          AppText.backwhitescreen,
                           style: GoogleFonts.jost(
                             fontSize: 9.5,
                             color: const Color(0xFF9C9590),
@@ -210,10 +211,10 @@ class _DeckMainView extends StatelessWidget {
                       children: [
                         Image(
                           image: AssetImage(
-                              "assets/images/card_interation/focusarrow.png")),
+                              AppImages.foucsarrowwhitescreen)),
                         const SizedBox(height: 5),
                         Text(
-                          "Focus",
+                         AppText.focus,
                           style: GoogleFonts.jost(
                             fontSize: 9.5,
                             color: const Color(0xFF9C9590),
@@ -226,7 +227,7 @@ class _DeckMainView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+          
           ] else ...[
             const SizedBox(height: 24),
           ],

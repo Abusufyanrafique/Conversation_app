@@ -46,7 +46,7 @@ class RestoreOptionTile extends StatelessWidget {
               height: 36,
               decoration: BoxDecoration(
                 color: const Color(0xFF7A6F66).withOpacity(0.4),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(10),
               ),
               child: Center(child: icon),
             ),

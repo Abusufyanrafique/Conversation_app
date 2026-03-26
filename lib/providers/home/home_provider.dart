@@ -50,29 +50,66 @@ class HomeProvider extends ChangeNotifier {
   final List<StatModel> stats = const [
     StatModel(value: '14', label: 'Day Streak', sublabel: 'Keep going 🔥'),
     StatModel(value: '58', label: 'Cards Read', sublabel: 'Across decks'),
-    StatModel(value: '9',  label: 'Saved', sublabel: 'Favourite moments'),
+    StatModel(value: '9', label: 'Saved', sublabel: 'Favourite moments'),
   ];
 
   // ── Personal Prompt ───────────────────────────────────
   final String personalPrompt =
       '"Today, notice a moment when you felt genuinely yourself. What made that possible?"';
 
-  bool _promptUnlocked = false;
-  bool get promptUnlocked => _promptUnlocked;
+  // isPremiumView: false = free card, true = locked/blurred card
+  bool _isPremiumView = false;
+  bool get isPremiumView => _isPremiumView;
 
-  void unlockPrompt() {
-    _promptUnlocked = true;
+  void onPlanBadgeTapped() {
+    _isPremiumView = !_isPremiumView;
     notifyListeners();
   }
 
   // ── Decks ─────────────────────────────────────────────
   final List<DeckModel> decks = const [
-    DeckModel(id: '1', title: 'Intimacy',   cardCount: '32 cards', colorHex: '#C2857B', imagePath:AppImages.couples, ),
-    DeckModel(id: '2', title: 'Presence',   cardCount: '27 cards', colorHex: '#8FAF9A', imagePath:AppImages.person, ),
-    DeckModel(id: '3', title: 'Family',     cardCount: '24 cards', colorHex: '#D4A97A', imagePath:AppImages.home, ),
-    DeckModel(id: '4', title: 'Self',       cardCount: '30 cards', colorHex: '#B4BAC6', imagePath: AppImages.self,),
-    DeckModel(id: '5', title: 'Identity',   cardCount: '18 cards', colorHex: '#B5A8CC', imagePath:AppImages.team, ),
-    DeckModel(id: '6', title: 'New People', cardCount: '22 cards', colorHex: '#B8A99A', imagePath:AppImages.emoji, ),
+    DeckModel(
+      id: '1', 
+      title: 'Intimacy',   
+      cardCount: '32 cards', 
+      colorHex: '#C2857B', 
+      imagePath: AppImages.couples
+      ),
+    DeckModel(
+      id: '2', 
+      title: 'Presence',   
+      cardCount: '27 cards', 
+      colorHex: '#8FAF9A', 
+      imagePath: AppImages.person
+      ),
+    DeckModel(
+      id: '3', 
+      title: 'Family',     
+      cardCount: '24 cards', 
+      colorHex: '#D4A97A', 
+      imagePath: AppImages.home
+      ),
+    DeckModel(
+      id: '4', 
+      title: 'Self',       
+      cardCount: '30 cards', 
+      colorHex: '#B4BAC6', 
+      imagePath: AppImages.self
+      ),
+    DeckModel(
+      id: '5', 
+      title: 'Identity',   
+      cardCount: '18 cards', 
+      colorHex: '#B5A8CC', 
+      imagePath: AppImages.team
+      ),
+    DeckModel(
+      id: '6', 
+      title: 'New People', 
+      cardCount: '22 cards', 
+      colorHex: '#B8A99A', 
+      imagePath: AppImages.emoji
+      ),
   ];
 
   // ── Saved Moments ─────────────────────────────────────

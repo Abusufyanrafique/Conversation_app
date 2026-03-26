@@ -10,8 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +42,8 @@ class ForgotPasswordScreen extends StatelessWidget {
     }
 
     double titleSize() {
-      if (isSmall)  return 28;   // 36 → 28
-      if (isMedium) return 38;   // 42 → 38
+      if (isSmall)  return 28;
+      if (isMedium) return 38;
       return 48;
     }
 
@@ -47,13 +60,13 @@ class ForgotPasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: sp(37)),         // was: 37.07
+              SizedBox(height: sp(37)),
               AuthScreenRow(
                 imagePath: AppImages.foucsarrow,
                 text: AppText.resetpassword,
                 onTap: () {},
               ),
-              SizedBox(height: sp(48)),         // was: 48
+              SizedBox(height: sp(48)),
               AuthHeaderSection(
                 topLabel: '',
                 title: '',
@@ -74,13 +87,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: sp(40)),         // was: 40
+              SizedBox(height: sp(40)),
               AuthSeeYouScreenTextField(
                 label: 'EMAIL ADDRESS',
                 hint: 'your@email.com',
-                controller: auth.emailController,
+                controller: _emailController, // ── local controller ──
               ),
-              SizedBox(height: sp(16)),         // was: 16
+              SizedBox(height: sp(16)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -95,7 +108,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: sp(380)),        // was: 180 — yeh sabse bada culprit tha
+              SizedBox(height: sp(150)),
               PrimaryButton(
                 text: AppText.sendresentlink,
                 onTap: () {
@@ -107,7 +120,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: sp(12)),         // was: 12.8
+              SizedBox(height: sp(12)),
               Center(
                 child: RichText(
                   text: TextSpan(

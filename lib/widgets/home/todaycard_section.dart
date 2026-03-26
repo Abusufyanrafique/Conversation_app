@@ -270,76 +270,79 @@ class _SaveRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSaved = context.watch<HomeProvider>().todayCard.isSaved;
 
-    return Row(
-      children: [
-        Expanded(
-          child: GestureDetector(
-            onTap: () => context.read<HomeProvider>().toggleSaved(),
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0,right: 10),
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () => context.read<HomeProvider>().toggleSaved(),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.50,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: AppColors.savebtncolor,
+                  borderRadius: BorderRadius.circular(11.82),
+                  border: Border.all(
+                    color: AppColors.white,
+                    width: 0.75                  
+                    ),
+                  
+                ),
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      isSaved ? 'SAVED TO FAVORITES' : 'SAVE TO FAVORITES',
+                      style: GoogleFonts.jost(
+                     fontSize:8.87,
+                     color:AppColors.savetextbtncolor,
+                     letterSpacing: 1.42,
+                     fontWeight: FontWeight.w400,
+                    
+                            ),
+                    ),
+                    const SizedBox(width: 4),
+                    Icon(
+                      isSaved ? Icons.favorite : Icons.favorite_border,
+                      size: 8,
+                      color:Color(0xFF2B2622),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 6),
+          InkWell(
+            onTap: () {
+              showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => const SaveMomentBottomSheet(),
+      );
+            },
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.50,
-              height: 40,
+              width: 38,
+              height: 39,
               decoration: BoxDecoration(
                 color: AppColors.savebtncolor,
-                borderRadius: BorderRadius.circular(11.82),
+                borderRadius: BorderRadius.circular(9.29),
                 border: Border.all(
                   color: AppColors.white,
-                  width: 0.75                  
+                  width: 0.59,           
                   ),
-                
               ),
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    isSaved ? 'SAVED TO FAVORITES' : 'SAVE TO FAVORITES',
-                    style: GoogleFonts.jost(
-                   fontSize:8.87,
-                   color:AppColors.savetextbtncolor,
-                   letterSpacing: 1.42,
-                   fontWeight: FontWeight.w400,
-                  
-                          ),
-                  ),
-                  const SizedBox(width: 4),
-                  Icon(
-                    isSaved ? Icons.favorite : Icons.favorite_border,
-                    size: 13,
-                    color: AppColors.textMedium,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(width: 6),
-        InkWell(
-          onTap: () {
-            showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            builder: (_) => const SaveMomentBottomSheet(),
-);
-          },
-          child: Container(
-            width: 38,
-            height: 39,
-            decoration: BoxDecoration(
-              color: AppColors.savebtncolor,
-              borderRadius: BorderRadius.circular(13),
-              border: Border.all(
-                color: AppColors.white,
-                width: 0.59,           
+              child: const Icon(
+                Icons.ios_share, size: 18, 
+                color: AppColors.shareiconcolor
                 ),
             ),
-            child: const Icon(
-              Icons.ios_share, size: 18, 
-              color: AppColors.shareiconcolor
-              ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

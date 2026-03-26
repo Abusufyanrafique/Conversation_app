@@ -13,6 +13,7 @@ class DeckCategory {
   final List<String> tags;
   final int deckCount;
   final bool isPremium;
+  final String imagepath;
  
   const DeckCategory({
     required this.title,
@@ -22,6 +23,6 @@ class DeckCategory {
     required this.icon,
     required this.tags,
     required this.deckCount,
-    this.isPremium = false,
+    this.isPremium = false, required this.imagepath,
   });
 }

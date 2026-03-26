@@ -98,50 +98,61 @@ class _CardFace extends StatelessWidget {
   final bool isBack;
 
   const _CardFace({
-    required this.text, 
-    required this.isBack
-    });
+    required this.text,
+    required this.isBack,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final sw = MediaQuery.of(context).size.width;
+    final sh = MediaQuery.of(context).size.height;
+
+    final cardWidth  = sw * 0.68;   // 272 / 400 ≈ 0.68
+    final cardHeight = sh * 0.46;   // 355 / 780 ≈ 0.46
+    final radius     = sw * 0.052;  // 20.66 proportional
+    final fontSize   = sw * 0.085;  // 33.81 proportional
+    final hPad       = sw * 0.07;   // 28px proportional
+    final vPad       = sh * 0.031;  // 24px proportional
+    final iconSize   = sw * 0.05;   // 20px proportional
+
     return Container(
-      width: double.infinity,
-      height: 100,
+      width: cardWidth,
+      height: cardHeight,
       decoration: BoxDecoration(
         color: const Color(0xFF3F3A35).withOpacity(0.20),
-        borderRadius: BorderRadius.circular(20.66),
+        borderRadius: BorderRadius.circular(radius),
         border: Border.all(
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withOpacity(0.2),
           width: 1,
         ),
       ),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 28,
-            vertical: 24,
+          padding: EdgeInsets.symmetric(
+            horizontal: hPad,
+            vertical: vPad,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               if (isBack)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
+                  padding: EdgeInsets.only(bottom: sh * 0.02),
                   child: Icon(
                     Icons.favorite_border,
                     color: Colors.white.withOpacity(0.3),
-                    size: 20,
+                    size: iconSize,
                   ),
                 ),
               Text(
                 text,
                 textAlign: TextAlign.center,
-                 style:TextStyle(
-                  color: Color(0xFFEFE7DE),
-                  fontWeight: FontWeight.w300,
+                style: TextStyle(
+                  color: const Color(0xFFEFE7DE),
+                  fontWeight: FontWeight.w400,
                   fontFamily: "PeachBlue",
-                  fontSize: 22.8
-                 )
+                  fontSize: fontSize,
+                ),
               ),
             ],
           ),

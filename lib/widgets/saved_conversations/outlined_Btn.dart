@@ -1,3 +1,4 @@
+import 'package:conversation_app/widgets/profile/profile_dialog_box.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +16,20 @@ class OutlinedBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){
+        showDialog(
+  context: context,
+  builder: (_) => ProfileDialogBox(
+    onDelete: () {
+      Navigator.pop(context);
+      // delete logic yahan
+    },
+    onKeep: () {
+      Navigator.pop(context);
+    },
+  ),
+);
+      },
       child: Container(
         width: 127,
         height: 33,

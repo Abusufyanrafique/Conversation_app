@@ -18,8 +18,9 @@ class LibraryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             LibraryHeader(),
+            SizedBox(height: 12,),
             LibrarySubtitle(),
-            SizedBox(height: 12),
+            SizedBox(height: 31),
             Expanded(child: CategoryList()),
             
           ],

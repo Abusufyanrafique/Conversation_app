@@ -1,3 +1,4 @@
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/models/library/deck_category.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class LibraryProvider extends ChangeNotifier {
           tags: _isPremium ? ['Intimacy', 'Deep Intimacy', 'All open'] : ['Intimacy', 'Deep Intimacy'],
           deckCount: 3,
           isPremium: _isPremium,
+          imagepath: AppImages.couples,
         ),
         DeckCategory(
           title: 'Friends',
@@ -30,7 +32,7 @@ class LibraryProvider extends ChangeNotifier {
           icon: Icons.people_outline,
           tags: _isPremium ? ['Presence', 'Friendship', 'All open'] : ['Presence', 'Friendship'],
           deckCount: 3,
-          isPremium: _isPremium,
+          isPremium: _isPremium, imagepath: AppImages.person,
         ),
         DeckCategory(
           title: 'Family',
@@ -40,7 +42,7 @@ class LibraryProvider extends ChangeNotifier {
           icon: Icons.home_outlined,
           tags: _isPremium ? ['Siblings', 'Generations', 'All open'] : ['Siblings', 'Generations'],
           deckCount: 2,
-          isPremium: _isPremium,
+          isPremium: _isPremium, imagepath:AppImages.home,
         ),
         DeckCategory(
           title: 'Self',
@@ -50,7 +52,7 @@ class LibraryProvider extends ChangeNotifier {
           icon: Icons.person_outline,
           tags: _isPremium ? ['Reflection', 'Growth', 'All open'] : ['Reflection', 'Growth'],
           deckCount: 2,
-          isPremium: _isPremium,
+          isPremium: _isPremium, imagepath:AppImages.self,
         ),
       ];
 }

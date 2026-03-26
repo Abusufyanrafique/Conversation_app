@@ -17,12 +17,12 @@ class QuestionScreenCard extends StatelessWidget {
       // width:357 ,
       padding: EdgeInsets.only(top: 32,left: 28.37,bottom: 47),
       margin: EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: 15,
+        horizontal: 25,
+        vertical: 14,
         ),
       decoration: BoxDecoration(
         color: Color(0xFFF4EFEA).withOpacity(0.01),
-        borderRadius: BorderRadius.circular(15.27),
+        borderRadius: BorderRadius.circular(16.27),
         border: Border.all(
           color: Color(0xffFFFFFF),
           width: 1.02,

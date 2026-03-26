@@ -2,6 +2,7 @@
 // SAVE MOMENT BOTTOM SHEET
 // ─────────────────────────────────────────
 
+import 'package:conversation_app/Utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,7 +32,7 @@ class _SaveMomentBottomSheetState extends State<SaveMomentBottomSheet> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 32,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 15,
         top: 16,
         left: 20,
         right: 20,
@@ -344,13 +345,13 @@ class _TagsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       spacing: 8,
-      runSpacing: 8,
+      runSpacing: 12,
       children: tags.map((tag) {
         final isSelected = selectedTags.contains(tag);
         return GestureDetector(
           onTap: () => onTagTap(tag),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
               color: isSelected ? const Color(0xFF3B2E28) : Color(0xFF9B9890).withOpacity(0.10),
               border: Border.all(
@@ -466,40 +467,63 @@ class MomentSavedSheet extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         color: Color(0xFFF5EDE4),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(52)),
       ),
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 40),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           const _DragHandle(),
-          const SizedBox(height: 50),
-
+          const SizedBox(height: 230),
+//=========================the end==========================
           // Heart icon
           Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: const Color(0xFFE2D4C6),
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: const Icon(
-              Icons.favorite_rounded,
-              color: Color(0xFF6B4F3A),
-              size: 28,
-            ),
-          ),
+  width: 75.27,
+  height: 72,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(22.91),
+    gradient: const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(0xFFCCA6A0),
+        Color(0xFFB5857D),
+      ],
+    ),
+    border: Border.all(
+      color: Color(0xFFFFFFFF).withOpacity(0.28),
+      width: 1.64,
+    ),
+  ),
+  padding: const EdgeInsets.symmetric(
+    vertical: 16.36,
+    horizontal: 22.91,
+  ),
+  child: Image(image: AssetImage(AppImages.bigblackheart))
+),
           const SizedBox(height: 24),
 
           // Title
           RichText(
-            text: const TextSpan(
+            text:  TextSpan(
               style: TextStyle(fontSize: 26, color: Color(0xFF3B2E28)),
               children: [
-                TextSpan(text: 'Moment '),
+                TextSpan(text: 'Moment ',
+                 style: GoogleFonts.jost(
+                 fontSize:28,
+                 color:Color(0xFF2B2622),
+                 fontWeight: FontWeight.w300,
+                
+                        ),
+                ),
                 TextSpan(
                   text: 'Saved',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+                  style: GoogleFonts.jost(
+                 fontSize:28,
+                 color:Color(0xFF7A6F66),
+                 fontWeight: FontWeight.w300,
+                
+                        ),
                 ),
               ],
             ),
@@ -509,36 +533,48 @@ class MomentSavedSheet extends StatelessWidget {
           Text(
             'It will be waiting for you whenever you\nreturn to it.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 13,
-              color: Colors.brown.shade400,
-              height: 1.5,
-            ),
+            style: GoogleFonts.jost(
+                 fontSize:14.44,
+                 color:Color(0xFF5C5651),
+                 fontStyle: FontStyle.italic,
+                 fontWeight: FontWeight.w300,
+                
+                        ),
           ),
           const SizedBox(height: 40),
 
           // Back to deck button
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: OutlinedButton(
-              onPressed: () => Navigator.pop(context),
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(color: Colors.brown.shade300),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: Text(
-                'BACK TO DECK →',
-                style: TextStyle(
-                  fontSize: 13,
-                  letterSpacing: 1.2,
-                  color: Colors.brown.shade600,
-                ),
-              ),
-            ),
-          ),
+         
+
+         Container(
+  width: 208,
+  height: 55,
+  decoration: BoxDecoration(
+    color: Color(0xFFEFE7DE),
+    border: Border.all(
+      color: Colors.white,
+      width: 1,
+      ),
+    borderRadius: BorderRadius.circular(20),
+  ),
+  child: GestureDetector(
+    onTap: () => Navigator.pop(context),
+    child: Center(
+      child: Text(
+        'BACK TO DECK →',
+        style: GoogleFonts.jost(
+                 fontSize:12,
+                 color:Color(0xFF2B2622),
+                 letterSpacing: 2.16,
+                 fontWeight: FontWeight.w400,
+                
+                        ),
+      ),
+    ),
+  ),
+),
+
+
           const SizedBox(height: 20),
         ],
       ),

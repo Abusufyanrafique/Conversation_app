@@ -14,7 +14,7 @@ class CategoryList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       itemCount: categories.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 12),
+      separatorBuilder: (_, __) => const SizedBox(height: 27.87),
       itemBuilder: (context, index) {
         return CategoryCard(
           category: categories[index],

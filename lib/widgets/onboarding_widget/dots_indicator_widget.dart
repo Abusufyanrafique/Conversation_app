@@ -22,7 +22,7 @@ class DotsIndicatorWidget extends StatelessWidget {
           height: 6,
           width: isActive ? 24 : 6,
           decoration: BoxDecoration(
-            color: isActive ? Colors.white : Colors.white24,
+            color: isActive ? Colors.white : Color(0xFF9C9590),
             borderRadius: BorderRadius.circular(3),
           ),
         );

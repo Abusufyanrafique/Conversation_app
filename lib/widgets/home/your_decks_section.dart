@@ -1,4 +1,4 @@
-import 'package:conversation_app/Utils/app_images.dart';
+import 'package:conversation_app/Utils/app_text.dart' as AppText;
 import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +11,8 @@ class YourDecksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final decks = context.watch<HomeProvider>().decks;
+    final provider = context.watch<HomeProvider>();
+
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -25,7 +27,7 @@ class YourDecksSection extends StatelessWidget {
   text: TextSpan(
     children: [
       TextSpan(
-        text: 'Your ',
+        text: AppText.your,
         style: GoogleFonts.jost(
           fontSize: 20,
           color: Color(0xFF2B2622),
@@ -33,7 +35,7 @@ class YourDecksSection extends StatelessWidget {
         ),
       ),
       TextSpan(
-        text: 'Decks',
+        text: AppText.deck,
         style: GoogleFonts.jost(
           fontSize: 20,
           color: Color(0xFF9E9890),
@@ -50,16 +52,20 @@ class YourDecksSection extends StatelessWidget {
                   children:  [
                     // Image(image: AssetImage(AppImages.homeandarrow)),
                     Text(
-                      'All decks',
+                      AppText.alldecks,
           style: GoogleFonts.jost(
           fontSize: 10,
           color: Color(0xFF7A6F66),
-          fontWeight: FontWeight.w300,
+          fontWeight: FontWeight.w400,
           
         ),
                     ),
                     SizedBox(width: 3),
-                    Icon(Icons.arrow_back_ios_new, size: 10, color:Color(0xFF7A6F66)),
+                    Icon(
+                      Icons.arrow_right_alt, 
+                      size: 10, 
+                      color:Color(0xFF7A6F66)
+                      ),
                   ],
                 ),
               ),
@@ -76,13 +82,15 @@ class YourDecksSection extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
-              childAspectRatio: 1.15,
+              childAspectRatio: 1,
             ),
             itemBuilder: (context, index) {
-              return DeckTile(
-                deck: decks[index],
-                onTap: () {},
-              );
+             return DeckTile(
+             deck: decks[index],
+             index: index,                         
+             isPremiumView: provider.isPremiumView, 
+             onTap: () {},
+           );
             },
           ),
         ],

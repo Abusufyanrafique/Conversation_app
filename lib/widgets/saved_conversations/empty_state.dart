@@ -47,7 +47,9 @@ class EmptyState extends StatelessWidget {
                       ),
         ),
         const SizedBox(height: 36),
-        ActionButtons(),
+        ActionButtons(
+          
+        ),
       ],
     );
   }

@@ -25,33 +25,30 @@ class HomeHeader extends StatelessWidget {
                 Text(
                   user.greeting.toUpperCase(),
                   style: GoogleFonts.jost(
-                 letterSpacing: 2.09,
-                 fontSize:10,
-                 color:AppColors.homeeveningtext,
-                 fontWeight: FontWeight.w400,
-                
-                        ),
+                    letterSpacing: 2.09,
+                    fontSize: 10,
+                    color: AppColors.homeeveningtext,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 const SizedBox(height: 6),
                 RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
-                  text: '${user.firstName} ',
-                  style: GoogleFonts.jost(
-                 fontSize:22,
-                 color:AppColors.homemayatext,
-                 fontWeight: FontWeight.w300,
-                
+                        text: '${user.firstName} ',
+                        style: GoogleFonts.jost(
+                          fontSize: 22,
+                          color: AppColors.homemayatext,
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                       TextSpan(
-                text: user.lastName,
-                 style: GoogleFonts.jost(
-                 fontSize:22,
-                 color:AppColors.homeeveningtext,
-                 fontWeight: FontWeight.w300,
-                
+                        text: user.lastName,
+                        style: GoogleFonts.jost(
+                          fontSize: 22,
+                          color: AppColors.homeeveningtext,
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                     ],
@@ -68,7 +65,10 @@ class HomeHeader extends StatelessWidget {
               const SizedBox(height: 4),
               Row(
                 children: [
-                  _PlanBadge(isPremium: user.isPremium),
+                  GestureDetector(
+                    onTap: () => provider.onPlanBadgeTapped(),
+                    child: _PlanBadge(isPremium: provider.isPremiumView),
+                  ),
                   const SizedBox(width: 11),
                   _AvatarCircle(initial: user.avatarInitial),
                 ],
@@ -89,16 +89,13 @@ class _PlanBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10, 
-        vertical: 3
-        ),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       decoration: BoxDecoration(
         color: AppColors.planbage,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-           color: AppColors.planbage,
-           width: 0.98
+          color: AppColors.planbage,
+          width: 0.98,
         ),
       ),
       child: Row(
@@ -118,7 +115,7 @@ class _PlanBadge extends StatelessWidget {
               fontSize: 9,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.3,
-              color:AppColors.planbagetextcolor,
+              color: AppColors.planbagetextcolor,
             ),
           ),
         ],
@@ -139,17 +136,16 @@ class _AvatarCircle extends StatelessWidget {
       height: 36,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(13),
-        // shape: BoxShape.circle,
         color: AppColors.dotcolor,
       ),
       alignment: Alignment.center,
       child: Text(
         initial,
-    style: GoogleFonts.cormorantGaramond(
-    color: Colors.white,
-    fontSize: 13.29,
-    fontWeight: FontWeight.w400,
-  ),
+        style: GoogleFonts.cormorantGaramond(
+          color: Colors.white,
+          fontSize: 13.29,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }

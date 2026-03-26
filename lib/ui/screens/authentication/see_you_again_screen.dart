@@ -10,8 +10,24 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SeeYouAgainScreen extends StatelessWidget {
+class SeeYouAgainScreen extends StatefulWidget {
   const SeeYouAgainScreen({super.key});
+
+  @override
+  State<SeeYouAgainScreen> createState() => _SeeYouAgainScreenState();
+}
+
+class _SeeYouAgainScreenState extends State<SeeYouAgainScreen> {
+  // ── Local controllers — sirf is screen ke liye ──
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +45,8 @@ class SeeYouAgainScreen extends StatelessWidget {
     }
 
     double titleSize() {
-      if (isSmall)  return 28;   // 36 → 28
-      if (isMedium) return 38;   // 42 → 38
+      if (isSmall)  return 28;
+      if (isMedium) return 38;
       return 48;
     }
 
@@ -47,13 +63,13 @@ class SeeYouAgainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: sp(37)),         // was: 37.07
+              SizedBox(height: sp(37)),
               AuthScreenRow(
                 imagePath: AppImages.foucsarrow,
                 text: AppText.signin,
                 onTap: () {},
               ),
-              SizedBox(height: sp(48)),         // was: 48
+              SizedBox(height: sp(48)),
               AuthHeaderSection(
                 topLabel: '',
                 title: '',
@@ -83,22 +99,24 @@ class SeeYouAgainScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: sp(40)),         // was: 40
+              SizedBox(height: sp(40)),
               AuthSeeYouScreenTextField(
                 label: 'EMAIL ADDRESS',
                 hint: 'your@email.com',
-                controller: auth.emailController,
+                // ── Provider ki jagah local controller ──
+                controller: _emailController,
               ),
-              SizedBox(height: sp(16)),         // was: 16
+              SizedBox(height: sp(16)),
               AuthSeeYouScreenTextField(
                 label: 'PASSWORD',
                 hint: '********',
-                controller: auth.passwordController,
+                // ── Provider ki jagah local controller ──
+                controller: _passwordController,
                 isPassword: true,
                 isPasswordVisible: auth.isPasswordVisible,
                 onTogglePassword: auth.togglePasswordVisibility,
               ),
-              SizedBox(height: sp(14)),         // was: 14.53
+              SizedBox(height: sp(14)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -113,19 +131,24 @@ class SeeYouAgainScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: sp(250)),         // was: 45
+              SizedBox(height: sp(40)),
               PrimaryButton(
                 text: AppText.signin,
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgotPasswordScreen(),
-                    ),
-                  );
+                  // ── Login ke waqt local controllers se value lo ──
+                   Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const
+                     ForgotPasswordScreen()),
+                 );
+                  // auth.signIn(
+                  //   email: _emailController.text,
+                  //   password: _passwordController.text,
+                  // );
                 },
               ),
-              SizedBox(height: sp(12)),         // was: 12
+              SizedBox(height: sp(12)),
               Center(
                 child: RichText(
                   text: TextSpan(

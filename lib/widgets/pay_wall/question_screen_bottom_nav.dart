@@ -20,7 +20,7 @@ class QuestionScreenbottomNav extends StatelessWidget {
         color: const Color(0xFFEFE7DE), 
         border: Border(
           top: BorderSide(
-            color: Colors.white.withOpacity(0.4), 
+            color: Colors.white.withOpacity(0.7), 
             width: 1
             ),
         ),
@@ -81,24 +81,35 @@ class QuestionScreenbottomNav extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color(0xFF2B2622), // dark brown/black
                     borderRadius: BorderRadius.circular(15.87),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1,
+                    )
                   ),
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 250),
-                    child: Row(
-                      key: ValueKey(isLast),
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          isLast ? "SEE WHATS’S NEXT →" : "NEXT CARD",
-                          style: GoogleFonts.jost(
-                        fontSize: 13, 
-                        color: const Color(0xFFF5F0EB),
-                        fontWeight: FontWeight.w500,
-                      ),
-                        ),
-                        
-                      ],
-                    ),
+                    child:Row(
+  key: ValueKey(isLast),
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text(
+      isLast ? "SEE WHAT’S NEXT" : "NEXT CARD",
+      style: GoogleFonts.jost(
+        fontSize: 13,
+        color: const Color(0xFFF5F0EB),
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+    
+    const SizedBox(width: 6), // thori spacing
+    
+    const Icon(
+      Icons.arrow_forward_sharp,
+      color: Color(0xFFF5F0EB),
+      size: 18,
+    ),
+  ],
+)
                   ),
                 ),
               ),

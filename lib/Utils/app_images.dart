@@ -37,4 +37,9 @@ class AppImages {
   static const arrowdiamond = "assets/icons/authentication/arrowdiamond.png";
   static const cricle = "assets/icons/authentication/cricle.png";
   static const homeandarrow = "assets/icons/home";
+  static const bigblackheart = "assets/icons/authentication/bigblackheart.png";
+  static const backarrowwhite = "assets/images/card_interation/backarrow.png";
+  static const foucsarrowwhitescreen = "assets/images/card_interation/focusarrow.png";
+  static const closeicon = "assets/icons/authentication/close.png";
+  static const lockimage = "assets/icons/authentication/lock.png";
 }

@@ -20,10 +20,10 @@ class WhoAreYouScreen extends StatelessWidget {
     final double gap1          = sh * 0.007;  // after label
     final double gap2          = sh * 0.009;  // after title block
     final double gap3          = sh * 0.026;  // after subtitle
-    final double gap4          = sh * 0.012;  // between grid and 5th card
+    final double gap4          = sh * 0.017;  // between grid and 5th card
     final double gridItemH     = sh * 0.118;
     final double gridItemW     = gridItemH * (144 / 103);
-    final double fifthCardH    = sh * 0.160;
+    final double fifthCardH    = sh * 0.150;
     final double bottomSpacing = sh * 0.020;
 
     return Scaffold(
@@ -114,7 +114,7 @@ class WhoAreYouScreen extends StatelessWidget {
                             (deck) => DeckCard(
                               deck: deck,
                               isTappable: false,
-                              height: 0,
+                              height: gridItemH,
                             ),
                           )
                           .toList(),

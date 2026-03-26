@@ -24,9 +24,10 @@ class SingleCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: ClipRRect(
-          child: isFlipped
-              ? _QuestionFace(card: card)
-              : _CardFront(card: card),
+          child: _CardFront(card: card)
+          // isFlipped
+          //     ? _QuestionFace(card: card)
+          //     : _CardFront(card: card),
         ),
       ),
     );
@@ -87,48 +88,29 @@ class _FallbackCardFront extends StatelessWidget {
 }
 
 // ── Question Face (flipped side) ────────────────────────
-class _QuestionFace extends StatelessWidget {
-  final ConversationCard card;
+// class _QuestionFace extends StatelessWidget {
+//   final ConversationCard card;
 
-  const _QuestionFace({required this.card});
+//   const _QuestionFace({required this.card});
 
-  @override
-  Widget build(BuildContext context) {
-    // ── SizedBox.expand — ClipRRect ki poori space fill karta hai ──
-    return SizedBox.expand(
-      child: ColoredBox(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '"${card.question}"',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Color(0xFF4A3535),
-                  fontFamily: 'peach-blue',
-                  height: 1.7,
-                ),
-              ),
-              const SizedBox(height: 28),
-              const Text(
-                'THE CONVERSATION COLLECTION',
-                style: TextStyle(
-                  fontSize: 7,
-                  letterSpacing: 2,
-                  color: Color(0xFF9E7C7C),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     // ── SizedBox.expand — ClipRRect ki poori space fill karta hai ──
+//     return SizedBox.expand(
+//       child: ColoredBox(
+//         color: Colors.white,
+//         child: Padding(
+//           padding: const EdgeInsets.all(24),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 // ── Chat bubble icon ─────────────────────────────────────
 class _ChatIcon extends StatelessWidget {

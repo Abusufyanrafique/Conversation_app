@@ -17,6 +17,7 @@ import 'package:conversation_app/ui/screens/Splash/splash_screen.dart';
 import 'package:conversation_app/ui/screens/authentication/wel_come_back_screen.dart';
 import 'package:conversation_app/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:conversation_app/ui/screens/library/library_screen.dart';
+import 'package:conversation_app/ui/screens/profile/free_plan_screen.dart';
 import 'package:conversation_app/ui/screens/savedconversations/saved_conversations_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreen(),
+      home: const FreePlanScreen(),
     );
   }
 }

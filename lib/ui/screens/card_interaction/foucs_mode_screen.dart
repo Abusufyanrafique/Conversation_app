@@ -38,8 +38,8 @@ class FocusModeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal:40,
-                        vertical: 120,
+                        horizontal:60,
+                        vertical: 160,
                       ),
                       child: SizedBox(
                         height: 200,

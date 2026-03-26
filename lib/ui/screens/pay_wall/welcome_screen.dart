@@ -31,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: topSpacing),
+                SizedBox(height: 56),
 
                 Stack(
                   alignment: Alignment.center,
@@ -138,7 +138,7 @@ class WelcomeScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
 
-                SizedBox(height: buttonSpacing),
+                SizedBox(height: 24),
 
                 BeginButton(
                   text: ' BEGIN → ',

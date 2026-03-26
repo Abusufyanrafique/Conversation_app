@@ -24,7 +24,7 @@ class AuthScreenRow extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: const Color(0xFFEDE3D8),
+              color: const Color(0xFFF4EFEA).withOpacity(0.01),
               borderRadius: BorderRadius.circular(15.87),
               border: Border.all(
                 color: Colors.white,

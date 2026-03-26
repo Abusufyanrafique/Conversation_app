@@ -48,6 +48,8 @@ class AuthSeeYouScreenTextField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             obscureText: isPassword && !isPasswordVisible,
+            cursorHeight: 14,
+             cursorColor: Color(0xFF7A6F66),
             style: GoogleFonts.jost(
               fontSize: 14,
               color: const Color(0xFF7A6F66).withOpacity(0.6),
