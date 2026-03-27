@@ -46,4 +46,5 @@ class AppImages {
   static const smallblackheart = "assets/icons/profile/smallblackheart.png";
   static const notification = "assets/icons/profile/notification.png";
   static const setting = "assets/icons/authentication/setting.png";
+  static const pen = "assets/icons/profile/pen1.png";
 }

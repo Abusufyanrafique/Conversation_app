@@ -71,7 +71,7 @@ class DeleteAccount extends StatelessWidget {
             const Icon(
               Icons.chevron_right,
               size: 15,
-              color: Color(0xFFB85C5C),
+              color: Color(0xFFC06060),
             ),
           ],
         ),

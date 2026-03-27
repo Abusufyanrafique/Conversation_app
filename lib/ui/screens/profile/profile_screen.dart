@@ -1,6 +1,7 @@
 import 'package:conversation_app/Utils/app_images.dart';
 import 'package:conversation_app/providers/profile/user_provider.dart';
 import 'package:conversation_app/widgets/profile/delete_account.dart';
+import 'package:conversation_app/widgets/profile/profile_dialog_box.dart';
 import 'package:conversation_app/widgets/profile/profile_header.dart';
 import 'package:conversation_app/widgets/profile/profile_menu_section.dart';
 import 'package:conversation_app/widgets/profile/unlock_premium_banner.dart';
@@ -63,7 +64,8 @@ class ProfileScreens extends StatelessWidget {
                           width: 0.8,
                         ),
                       ),
-                      child: Text(
+                      child:Row(children: [
+                         Text(
                         user.isPremium ? 'PREMIUM' : 'FREE',
                         style: GoogleFonts.jost(
                           fontSize: 7,
@@ -74,6 +76,7 @@ class ProfileScreens extends StatelessWidget {
                               : const Color(0xFF9C9890),
                         ),
                       ),
+                      ],)
                     ),
                     onTap: () {},
                   ),
@@ -154,7 +157,18 @@ class ProfileScreens extends StatelessWidget {
               SizedBox(height: 24,),
               DeleteAccount(
               onTap: () {
-    // TODO: Show confirmation dialog
+     showDialog(
+     context: context,
+     builder: (_) => ProfileDialogBox(
+     onDelete: () {
+      Navigator.pop(context);
+      // delete logic yahan
+    },
+    onKeep: () {
+      Navigator.pop(context);
+    },
+  ),
+);
                      },
                      ),
               const SizedBox(height: 14),

@@ -21,7 +21,7 @@ class ProfileDialogBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 32, 20, 29),
+        padding: const EdgeInsets.fromLTRB(20, 32, 20, 30),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

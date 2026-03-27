@@ -27,11 +27,17 @@ class ProfileMenuSection extends StatelessWidget {
             color: const Color(0xFF7A6F66),
           ),
         ),
-        SizedBox(width: 7,),
+         SizedBox(width: 9,),
                      Expanded(
                      child: Container(
-                       height: 0.9,
-                       color: const Color(0xFF9D9890).withOpacity(0.08),
+                     width: 206,
+                     height: 0.98,
+                     decoration: BoxDecoration(
+                     gradient: LinearGradient(colors: [
+                          Color(0xFF9E9890).withOpacity(0.2),
+                          Color(0xFF9E9890).withOpacity(0.02),
+                        ])
+                       ),
                      ),
                    ),
         ],
@@ -53,9 +59,11 @@ class ProfileMenuSection extends StatelessWidget {
                   if (!isLast)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
-                      child: Container(
-                        height: 0.5,
-                        color: const Color(0xFF9C9890).withOpacity(0.15),
+                      child: Expanded(
+                        child: Container(
+                          height: 0.96,
+                          color: const Color(0xFF9C9890).withOpacity(0.10),
+                        ),
                       ),
                     ),
                 ],
@@ -78,7 +86,7 @@ class _MenuTile extends StatelessWidget {
       onTap: item.onTap,
       borderRadius: BorderRadius.circular(15.87),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Row(
           children: [
            Container(
