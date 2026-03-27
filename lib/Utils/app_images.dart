@@ -42,4 +42,8 @@ class AppImages {
   static const foucsarrowwhitescreen = "assets/images/card_interation/focusarrow.png";
   static const closeicon = "assets/icons/authentication/close.png";
   static const lockimage = "assets/icons/authentication/lock.png";
+  static const smallblackcricle = "assets/icons/profile/smallbalckcricle.png";
+  static const smallblackheart = "assets/icons/profile/smallblackheart.png";
+  static const notification = "assets/icons/profile/notification.png";
+  static const setting = "assets/icons/authentication/setting.png";
 }

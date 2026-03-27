@@ -12,12 +12,14 @@ import 'package:conversation_app/providers/WhoAreYouProvider/who_are_you.dart';
 import 'package:conversation_app/providers/authentication/auth_see_you_screen_provider.dart';
 import 'package:conversation_app/providers/home/home_provider.dart';
 import 'package:conversation_app/providers/library/library_provider.dart';
+import 'package:conversation_app/providers/profile/user_provider.dart';
 import 'package:conversation_app/providers/splash_provider/splash_provider.dart';
 import 'package:conversation_app/ui/screens/Splash/splash_screen.dart';
 import 'package:conversation_app/ui/screens/authentication/wel_come_back_screen.dart';
 import 'package:conversation_app/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:conversation_app/ui/screens/library/library_screen.dart';
 import 'package:conversation_app/ui/screens/profile/free_plan_screen.dart';
+import 'package:conversation_app/ui/screens/profile/premium_plan_screen.dart';
 import 'package:conversation_app/ui/screens/savedconversations/saved_conversations_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,7 @@ void main() {
         ChangeNotifierProvider(create: (_)=>LibraryProvider()),
         ChangeNotifierProvider(create: (_)=>DashboardProvider()),
         ChangeNotifierProvider(create: (_)=>HomeProvider()),
+        ChangeNotifierProvider(create: (_)=>UserProvider()),
      
         
       ],
@@ -65,7 +68,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const FreePlanScreen(),
+      home: const DashBoardScreen(),
     );
   }
 }

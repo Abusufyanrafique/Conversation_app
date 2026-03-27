@@ -57,7 +57,10 @@ class CurrentPlanCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15, 
+                  vertical: 4
+                  ),
                 decoration: BoxDecoration(
                   color: const Color(0xFF9C9890).withOpacity(0.12),
                   borderRadius: BorderRadius.circular(20),
@@ -134,7 +137,7 @@ class PlanDetail extends StatelessWidget {
         const SizedBox(height: 3),
         Text(
           value,
-          style: GoogleFonts.cormorantGaramond(
+          style: GoogleFonts.jost(
             fontSize: 14,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.italic,
